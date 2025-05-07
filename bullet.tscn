@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://hq38vitm5pgd"]
+
+[ext_resource type="Script" uid="uid://bgvteqmi1hhja" path="res://bullet.gd" id="1_v7oki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtl8c"]
+size = Vector2(32, 80)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_v7oki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rtl8c")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 0.537255, 0.580392)
+polygon = PackedVector2Array(16, -40, 0, -48, -16, -40, -16, -8, 0, 48, 16, -8)
+uv = PackedVector2Array(16, -40, 0, -48, -16, -40, -16, 24, 16, 24)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.27374e-13, 0)
+scale = Vector2(3.2, 5.6)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

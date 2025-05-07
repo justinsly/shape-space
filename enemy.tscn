@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2koh0mt0vlsw"]
+
+[ext_resource type="Script" uid="uid://bqgnae0j5ughc" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="1_7k104"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(124.444, 124.444)
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
+scale = Vector2(0.9, 0.9)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.11928e-06, 2.11928e-06)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7k104")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.14441e-05, 1.14441e-05)
+scale = Vector2(13.3333, 13.3333)
+
+[node name="KnockTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="KnockTimer" to="." method="_on_knock_timer_timeout"]
