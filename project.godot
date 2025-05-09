@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://dqvg78vj7u0gc"
 config/icon="res://icon.svg"
 
+[autoload]
+
+playervars="*res://playervars.gd"
+
 [display]
 
 window/energy_saving/keep_screen_on=false
