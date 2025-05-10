@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://enemy.tscn" id="2_1bvp3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(100, 728)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1274, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(100, 728)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h2yge")
@@ -18,14 +18,7 @@ sceneenemy = ExtResource("2_1bvp3")
 position = Vector2(555, 553)
 
 [node name="border" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
-position = Vector2(-84, 324)
-shape = SubResource("RectangleShape2D_ig7tw")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="border"]
-position = Vector2(1232, 312)
-shape = SubResource("RectangleShape2D_ig7tw")
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
 position = Vector2(558, -64)
@@ -34,6 +27,14 @@ shape = SubResource("RectangleShape2D_0xm2m")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="border"]
 position = Vector2(563, 712)
 shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
+position = Vector2(-84, 324)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="border"]
+position = Vector2(1232, 312)
+shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="enemyspawner" type="Timer" parent="."]
 autostart = true

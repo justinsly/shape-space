@@ -12,8 +12,10 @@ var canfire = true
 var iframes = false
 # for the player to know if its alive
 var alive = true
+# downward acceleration velocity for the death animation
+var fall_accel = 400
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var direction = Vector2.ZERO
 	if alive:
 		if Input.is_action_pressed("move_right"):
@@ -33,14 +35,16 @@ func _physics_process(_delta):
 				bullet.position.y -= 30
 				get_parent().add_child(bullet)
 				$FireTimer.start()
-	
-	
-	if direction != Vector2.ZERO:
-		# prevents the player from being faster by moving diagonally
-		direction = direction.normalized()
-	velocity = direction * speed
+		
+		
+		if direction != Vector2.ZERO:
+			# prevents the player from being faster by moving diagonally
+			direction = direction.normalized()
+		velocity = direction * speed
+	else:
+		$Sprite2D.rotate(PI * delta)
+		velocity.y += fall_accel * delta
 	move_and_slide()
-
 
 func _on_fire_timer_timeout():
 	canfire = true
@@ -60,6 +64,8 @@ func _on_hitbox_area_entered(area):
 				$CollisionShape2D.set_deferred("disabled", true)
 				$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 				alive = false
+				velocity.x = 0
+				velocity.y = -350
 			flickerframe.emit()
 			hit.emit()
 
