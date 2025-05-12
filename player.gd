@@ -4,7 +4,10 @@ signal hit
 signal dieded
 # NOTE: i have no freaking idea on what am i doing but i didnt bother searching up a better method, so for now this signal handles the flickering during iframes
 signal flickerframe
+# the bullet scene
 @export var scenebullet: PackedScene
+# the explosion effect scene
+@export var sceneboom: PackedScene
 var speed = 550
 # used for delays between shots
 var canfire = true
@@ -14,6 +17,7 @@ var iframes = false
 var alive = true
 # downward acceleration velocity for the death animation
 var fall_accel = 400
+
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -82,3 +86,15 @@ func _on_flickerframe():
 		await get_tree().create_timer(0.01 * delta).timeout
 		$Sprite2D.show()
 		await get_tree().create_timer(0.01 * delta).timeout
+
+
+func _on_death_offscreen_notifier_screen_exited():
+	if not alive:
+		var boom = sceneboom.instantiate()
+		boom.position = position
+		if position.y > 648:
+			boom.position.y -= 50
+		add_sibling(boom)
+		boom.expandboom(Vector2(5.0, 5.0))
+		print("boom")
+		queue_free()

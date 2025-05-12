@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3heqwjv2ran"]
+
+[ext_resource type="Texture2D" uid="uid://db3nc8vjf3gun" path="res://boom.png" id="1_crcy4"]
+[ext_resource type="Script" uid="uid://bdib0dpv7jhcn" path="res://boom.gd" id="2_37ygf"]
+
+[node name="boom" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_crcy4")
+script = ExtResource("2_37ygf")

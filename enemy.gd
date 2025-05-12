@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var sceneboom: PackedScene
 var speed = 250
 
 func _process(delta):
@@ -25,3 +26,10 @@ func _on_area_entered(area):
 
 func _on_knock_timer_timeout():
 	set_process(true)
+
+# FIXME: it works yet it doesnt work, the explosion does get instantiated as shown in the output, but it doesnt actually appear
+func explode():
+	var boom = sceneboom.instantiate()
+	boom.global_position = global_position
+	add_child(boom)
+	boom.expandboom(Vector2(1.5, 1.5))

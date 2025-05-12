@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2koh0mt0vlsw"]
+[gd_scene load_steps=5 format=3 uid="uid://b2koh0mt0vlsw"]
 
 [ext_resource type="Script" uid="uid://bqgnae0j5ughc" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://boom.tscn" id="2_qi2p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(124.444, 124.444)
@@ -11,6 +12,7 @@ scale = Vector2(0.9, 0.9)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_4gyqm")
+sceneboom = ExtResource("2_qi2p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.11928e-06, 2.11928e-06)
