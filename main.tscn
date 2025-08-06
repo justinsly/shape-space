@@ -52,5 +52,6 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 50
 text = "health: 3"
 
+[connection signal="heal" from="Player" to="." method="_on_player_heal"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="enemyspawner" to="." method="_on_enemyspawner_timeout"]

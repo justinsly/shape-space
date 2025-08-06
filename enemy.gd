@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var sceneboom: PackedScene
+@export var sceneheal: PackedScene
+
 var speed = 250
 
 func _process(delta):
@@ -27,9 +29,14 @@ func _on_area_entered(area):
 func _on_knock_timer_timeout():
 	set_process(true)
 
-# FIXME: it works yet it doesnt work, the explosion does get instantiated as shown in the output, but it doesnt actually appear
 func explode():
 	var boom = sceneboom.instantiate()
-	boom.global_position = global_position
-	add_child(boom)
-	boom.expandboom(Vector2(1.5, 1.5))
+	boom.position = position
+	add_sibling(boom)
+	boom.act(1.5)
+	# if the player's health is not full, roll a chance to drop a healing item
+	if playervars.health < 3:
+		if randf_range(0, 6) <= 2:
+			var healitem = sceneheal.instantiate()
+			healitem.position = position
+			call_deferred("add_sibling", healitem)

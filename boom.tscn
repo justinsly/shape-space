@@ -1,9 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg3heqwjv2ran"]
+[gd_scene load_steps=6 format=3 uid="uid://bg3heqwjv2ran"]
 
-[ext_resource type="Texture2D" uid="uid://db3nc8vjf3gun" path="res://boom.png" id="1_crcy4"]
+[ext_resource type="Texture2D" uid="uid://drbashn4k0tmg" path="res://boomsheet.png" id="1_crcy4"]
 [ext_resource type="Script" uid="uid://bdib0dpv7jhcn" path="res://boom.gd" id="2_37ygf"]
+
+[sub_resource type="Animation" id="Animation_yvxa8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_37ygf"]
+resource_name = "boom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubxla"]
+_data = {
+&"RESET": SubResource("Animation_yvxa8"),
+&"boom": SubResource("Animation_37ygf")
+}
 
 [node name="boom" type="Sprite2D"]
 texture_filter = 1
+position = Vector2(3.8147e-06, 5.72205e-06)
+scale = Vector2(3, 3)
 texture = ExtResource("1_crcy4")
+hframes = 10
 script = ExtResource("2_37ygf")
+
+[node name="boomanimate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ubxla")
+}
+
+[connection signal="animation_finished" from="boomanimate" to="." method="_on_boomanimate_animation_finished"]

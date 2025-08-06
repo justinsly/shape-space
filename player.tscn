@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cynekxynk6jro"]
+[gd_scene load_steps=8 format=3 uid="uid://cynekxynk6jro"]
 
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c0eib7q1axem7" path="res://player.gd" id="1_onrkg"]
@@ -10,6 +10,9 @@ size = Vector2(120, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(140, 140)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.8, 0.8)
@@ -45,6 +48,12 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="DeathOffscreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-4.76837e-06, -4.76837e-06)
 scale = Vector2(8, 8)
+
+[node name="itemhitbox" type="Area2D" parent="." groups=["plritem"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemhitbox"]
+position = Vector2(-7.15256e-06, -7.15256e-06)
+shape = SubResource("RectangleShape2D_hqtel")
 
 [connection signal="flickerframe" from="." to="." method="_on_flickerframe"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

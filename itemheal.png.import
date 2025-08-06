@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd7fehjdmewx4"
-path="res://.godot/imported/boom.png-fb417af8d72dd45de7f8600032b3cf11.ctex"
+uid="uid://s68ut7xtd2pc"
+path="res://.godot/imported/itemheal.png-833ae3d9eae646c1eee2ce81e6ebaefe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boom.png"
-dest_files=["res://.godot/imported/boom.png-fb417af8d72dd45de7f8600032b3cf11.ctex"]
+source_file="res://itemheal.png"
+dest_files=["res://.godot/imported/itemheal.png-833ae3d9eae646c1eee2ce81e6ebaefe.ctex"]
 
 [params]
 

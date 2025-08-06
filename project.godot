@@ -12,6 +12,7 @@ config_version=5
 
 config/name="shape space"
 run/main_scene="uid://cu3b6mcoi0h7n"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://dqvg78vj7u0gc"
 config/icon="res://icon.svg"
@@ -22,7 +23,9 @@ playervars="*res://playervars.gd"
 
 [display]
 
+window/size/sharp_corners=true
 window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [editor]

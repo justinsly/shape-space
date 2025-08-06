@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal hit
 signal dieded
+signal heal
 # NOTE: i have no freaking idea on what am i doing but i didnt bother searching up a better method, so for now this signal handles the flickering during iframes
 signal flickerframe
 # the bullet scene
@@ -93,8 +94,8 @@ func _on_death_offscreen_notifier_screen_exited():
 		var boom = sceneboom.instantiate()
 		boom.position = position
 		if position.y > 648:
-			boom.position.y -= 50
+			boom.position.y -= 70
 		add_sibling(boom)
-		boom.expandboom(Vector2(5.0, 5.0))
+		boom.act()
 		print("boom")
 		queue_free()
