@@ -14,8 +14,11 @@ config/name="shape space"
 run/main_scene="uid://cu3b6mcoi0h7n"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://dqvg78vj7u0gc"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://v6lnirwgguse"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=50
 
 [autoload]
 
@@ -25,6 +28,7 @@ playervars="*res://playervars.gd"
 
 window/size/sharp_corners=true
 window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

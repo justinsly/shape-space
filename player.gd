@@ -92,10 +92,12 @@ func _on_flickerframe():
 func _on_death_offscreen_notifier_screen_exited():
 	if not alive:
 		var boom = sceneboom.instantiate()
+		var gameover = get_tree().get_first_node_in_group("gameoverwindow")
 		boom.position = position
 		if position.y > 648:
 			boom.position.y -= 70
 		add_sibling(boom)
 		boom.act()
 		print("boom")
+		gameover.show()
 		queue_free()

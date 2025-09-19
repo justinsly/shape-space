@@ -15,4 +15,5 @@ func _on_area_entered(area):
 	if area.is_in_group("enemy"):
 		area.explode()
 		area.queue_free()
+		playervars.score += 1
 		queue_free()

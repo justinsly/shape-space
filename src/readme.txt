@@ -1,0 +1,1 @@
+you obviously need aseprite to open the source files

@@ -17,3 +17,8 @@ func _on_player_hit():
 
 func _on_player_heal():
 	$HUD/HealthLabel.text = "health: %s" % playervars.health
+
+
+func _on_scoremanager_update():
+	$HUD/ScoreLabel.text = "score: %s" % playervars.score
+	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
