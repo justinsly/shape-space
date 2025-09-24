@@ -99,5 +99,5 @@ func _on_death_offscreen_notifier_screen_exited():
 		add_sibling(boom)
 		boom.act()
 		print("boom")
-		gameover.show()
+		gameover.popup()
 		queue_free()
