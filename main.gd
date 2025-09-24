@@ -5,6 +5,7 @@ extends Node
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color(0, 0, 0))
+	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
 
 func _on_enemyspawner_timeout():
 	var enemy = sceneenemy.instantiate()

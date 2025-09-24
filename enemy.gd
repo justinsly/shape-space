@@ -36,7 +36,7 @@ func explode():
 	boom.act(1.5)
 	# if the player's health is not full, roll a chance to drop a healing item
 	if playervars.health < 3:
-		if randf_range(0, 6) <= 2:
+		if randf_range(0, 12) <= 6:
 			var healitem = sceneheal.instantiate()
 			healitem.position = position
 			call_deferred("add_sibling", healitem)
