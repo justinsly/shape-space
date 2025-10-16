@@ -34,7 +34,7 @@ wait_time = 0.4
 one_shot = true
 
 [node name="IframeTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]

@@ -4,7 +4,7 @@ signal update
 
 var oldscore := 0
 
-func _process(delta):
+func _process(_delta):
 	if oldscore != playervars.score:
 		oldscore = playervars.score
 		if playervars.score > playervars.hiscore:

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhycwib2yjk2"]
+
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="1_3dyt8"]
+[ext_resource type="Script" uid="uid://bg65yeggbh25b" path="res://arcadegameover.gd" id="1_xbt5m"]
+[ext_resource type="PackedScene" uid="uid://cu3b6mcoi0h7n" path="res://main.tscn" id="2_pdoka"]
+
+[node name="arcadegameover" type="Node"]
+script = ExtResource("1_xbt5m")
+game = ExtResource("2_pdoka")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_3dyt8")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+z_index = -2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -196.0
+offset_right = 175.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER :("
+
+[node name="prompt" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = 164.0
+offset_right = 560.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "press [SHIFT/ENTER/SPACE] to retry
+press [ESC] to quit"
+horizontal_alignment = 1
+
+[node name="score" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -69.0
+offset_right = 234.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "! NEW 	RECORD !
+SCORE: BLAH
+HIGH SCORE: BLAH"
+horizontal_alignment = 1
+
+[connection signal="pulse" from="." to="." method="_on_pulse"]

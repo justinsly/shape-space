@@ -1,21 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu3b6mcoi0h7n"]
+[gd_scene load_steps=8 format=3 uid="uid://cu3b6mcoi0h7n"]
 
 [ext_resource type="Script" uid="uid://cy0itby661ct0" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://enemy.tscn" id="2_1bvp3"]
-[ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://VCR_OSD_MONO_1.001.ttf" id="4_1bvp3"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://d8f7xsowp8ys" path="res://gameover_window.gd" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1274, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(100, 728)
-
-[sub_resource type="Theme" id="Theme_lquwl"]
-Label/font_sizes/font_size = 50
-Label/fonts/font = ExtResource("4_1bvp3")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h2yge")
@@ -52,7 +47,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = SubResource("Theme_lquwl")
+theme = ExtResource("4_lquwl")
 
 [node name="HealthLabel" type="Label" parent="HUD"]
 layout_mode = 0
@@ -77,21 +72,8 @@ text = "HI score: 0"
 [node name="scoremanager" type="Node" parent="." groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
 
-[node name="GameoverWindow" type="AcceptDialog" parent="." groups=["gameoverwindow"]]
-disable_3d = true
-title = "you dieded"
-initial_position = 2
-size = Vector2i(300, 200)
-unresizable = true
-popup_window = true
-sharp_corners = true
-ok_button_text = "retry"
-dialog_close_on_escape = false
-script = ExtResource("6_7mycd")
-
+[connection signal="explode" from="Player" to="." method="_on_player_explode"]
 [connection signal="heal" from="Player" to="." method="_on_player_heal"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="enemyspawner" to="." method="_on_enemyspawner_timeout"]
 [connection signal="update" from="scoremanager" to="." method="_on_scoremanager_update"]
-[connection signal="about_to_popup" from="GameoverWindow" to="GameoverWindow" method="_on_about_to_popup"]
-[connection signal="confirmed" from="GameoverWindow" to="GameoverWindow" method="_on_confirmed"]

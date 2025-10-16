@@ -6,6 +6,8 @@ extends Node
 func _ready():
 	RenderingServer.set_default_clear_color(Color(0, 0, 0))
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
+	playervars.health = 3
+	playervars.score = 0
 
 func _on_enemyspawner_timeout():
 	var enemy = sceneenemy.instantiate()
@@ -23,3 +25,11 @@ func _on_player_heal():
 func _on_scoremanager_update():
 	$HUD/ScoreLabel.text = "score: %s" % playervars.score
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
+
+
+
+func _on_player_explode():
+	await get_tree().create_timer(2).timeout
+	# WARNING: when i finally decide to organize the game files,
+	# dont forget to change this file path
+	get_tree().change_scene_to_file("res://arcadegameover.tscn")

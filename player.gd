@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal hit
 signal dieded
 signal heal
+signal explode
+
 # NOTE: i have no freaking idea on what am i doing but i didnt bother searching up a better method, so for now this signal handles the flickering during iframes
 signal flickerframe
 # the bullet scene
@@ -84,7 +86,12 @@ func _on_flickerframe():
 	var delta = get_process_delta_time()
 	while iframes:
 		$Sprite2D.hide()
+		# this "if" statement is there because otherwise errors will be spat out
+		if not is_inside_tree():
+			return
 		await get_tree().create_timer(0.01 * delta).timeout
+		if not is_inside_tree():
+			return
 		$Sprite2D.show()
 		await get_tree().create_timer(0.01 * delta).timeout
 
@@ -92,12 +99,11 @@ func _on_flickerframe():
 func _on_death_offscreen_notifier_screen_exited():
 	if not alive:
 		var boom = sceneboom.instantiate()
-		var gameover = get_tree().get_first_node_in_group("gameoverwindow")
 		boom.position = position
 		if position.y > 648:
 			boom.position.y -= 70
 		add_sibling(boom)
 		boom.act()
 		print("boom")
-		gameover.popup()
+		explode.emit()
 		queue_free()
