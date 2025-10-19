@@ -17,10 +17,12 @@ func _process(_delta):
 		await get_tree().create_timer(0.2).timeout
 		get_tree().change_scene_to_packed(game)
 	
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+	
 
 func _on_pulse():
 	while true:
-		var delta = get_process_delta_time()
 		if not is_inside_tree():
 			return
 		await get_tree().create_timer(1).timeout
