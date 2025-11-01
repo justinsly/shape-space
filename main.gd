@@ -9,6 +9,18 @@ func _ready():
 	playervars.health = 3
 	playervars.score = 0
 
+func save_data():
+	# the save data is declared as "s_data"
+	# instead of "save_data"
+	# just so the debugger wouldnt complain about it
+	# shadowing the function
+	var save_file = FileAccess.open("user://scoredata.jden", FileAccess.WRITE)
+	var s_data = playervars.call("save_score")
+	var json_string = JSON.stringify(s_data)
+	
+	save_file.store_line(json_string)
+	print("data saved")
+
 func _on_enemyspawner_timeout():
 	var enemy = sceneenemy.instantiate()
 	enemy.initialize(randf_range(8.0, 1144.0), -47)
@@ -30,6 +42,10 @@ func _on_scoremanager_update():
 
 func _on_player_explode():
 	await get_tree().create_timer(2).timeout
+	# the data gets saved every time even if no new record was achieved
+	# this obviously is a waste of precious disk power
+	# but im too lazy to write a fix for that at the moment
+	save_data()
 	# WARNING: when i finally decide to organize the game files,
 	# dont forget to change this file path
 	get_tree().change_scene_to_file("res://arcadegameover.tscn")
