@@ -18,7 +18,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_area_entered(area):
 	if area.is_in_group("player"):
-		print("i touched player")
+		#print("i touched player")
 		var delta = get_process_delta_time() 
 		$KnockTimer.start()
 		set_process(false)

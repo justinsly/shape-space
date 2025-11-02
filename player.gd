@@ -62,7 +62,7 @@ func _on_hitbox_area_entered(area):
 		#print("touched by enemy")
 		if not iframes:
 			iframes = true
-			print("ow")
+			#print("ow")
 			$IframeTimer.start()
 			playervars.health -= 1
 			if playervars.health <= 0:
