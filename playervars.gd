@@ -10,14 +10,14 @@ func save_score():
 	# so that people wouldnt be able to easily tinker with it
 	var save_dict = {
 		"hiscore" : hiscore,
-		# gonna be honest i lost track of how oldhiscore is used
 		"oldhiscore" : oldhiscore
 	}
 	return save_dict
 
 func load_score():
 	# im just going off what the official documentation is saying,
-	# managing files is scary
+	# managing files is scary.
+	# future jayden here: ok i think i kinda get it
 	if not FileAccess.file_exists("user://scoredata.jden"):
 		print("could not load save data: file doesnt exist yet")
 		return

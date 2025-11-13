@@ -42,10 +42,8 @@ func _on_scoremanager_update():
 
 func _on_player_explode():
 	await get_tree().create_timer(2).timeout
-	# the data gets saved every time even if no new record was achieved
-	# this obviously is a waste of precious disk power
-	# but im too lazy to write a fix for that at the moment
-	save_data()
+	if playervars.hiscore > playervars.oldhiscore:
+		save_data()
 	# WARNING: when i finally decide to organize the game files,
 	# dont forget to change this file path
 	get_tree().change_scene_to_file("res://arcadegameover.tscn")

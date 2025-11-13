@@ -18,6 +18,7 @@ func _process(_delta):
 		get_tree().change_scene_to_packed(game)
 	
 	if Input.is_action_just_pressed("quit"):
+		# NOTICE: change this once we make a title screen
 		get_tree().quit()
 	
 
