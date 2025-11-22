@@ -4,16 +4,13 @@ extends Node
 @export var sceneenemy: PackedScene
 
 func _ready():
+	# could've probably used a WorldEnvironment node but it didnt work last time i tried
 	RenderingServer.set_default_clear_color(Color(0, 0, 0))
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
 	playervars.health = 3
 	playervars.score = 0
 
 func save_data():
-	# the save data is declared as "s_data"
-	# instead of "save_data"
-	# just so the debugger wouldnt complain about it
-	# shadowing the function
 	var save_file = FileAccess.open("user://scoredata.jden", FileAccess.WRITE)
 	var s_data = playervars.call("save_score")
 	var json_string = JSON.stringify(s_data)

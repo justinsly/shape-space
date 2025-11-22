@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu3b6mcoi0h7n"]
+[gd_scene load_steps=9 format=3 uid="uid://cu3b6mcoi0h7n"]
 
 [ext_resource type="Script" uid="uid://cy0itby661ct0" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://enemy.tscn" id="2_1bvp3"]
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1274, 66)
@@ -17,7 +18,7 @@ script = ExtResource("1_h2yge")
 sceneenemy = ExtResource("2_1bvp3")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(555, 553)
+position = Vector2(576, 553)
 
 [node name="border" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -71,6 +72,35 @@ text = "HI score: 0"
 
 [node name="scoremanager" type="Node" parent="." groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
+
+[node name="pauseHUD" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("4_lquwl")
+
+[node name="pauseText" type="Label" parent="pauseHUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -22.0
+offset_right = 88.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="pausehandler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("6_7mycd")
 
 [connection signal="explode" from="Player" to="." method="_on_player_explode"]
 [connection signal="heal" from="Player" to="." method="_on_player_heal"]

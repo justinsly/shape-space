@@ -13,11 +13,11 @@ signal flickerframe
 @export var sceneboom: PackedScene
 var speed = 550
 # used for delays between shots
-var canfire = true
+var canfire := true
 # for invuln periods when player gets hit
-var iframes = false
+var iframes := false
 # for the player to know if its alive
-var alive = true
+var alive := true
 # downward acceleration velocity for the death animation
 var fall_accel = 400
 
