@@ -59,7 +59,6 @@ func _on_fire_timer_timeout():
 #FIXME: if the player is inside an enemy when the iframes runs out, they wont be considered as "hit"
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("enemy"):
-		#print("touched by enemy")
 		if not iframes:
 			iframes = true
 			#print("ow")

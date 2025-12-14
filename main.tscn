@@ -73,17 +73,12 @@ text = "HI score: 0"
 [node name="scoremanager" type="Node" parent="." groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
 
-[node name="pauseHUD" type="Control" parent="."]
+[node name="pauseHUD" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 10
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-theme = ExtResource("4_lquwl")
 
 [node name="pauseText" type="Label" parent="pauseHUD"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -95,6 +90,7 @@ offset_right = 88.0
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_lquwl")
 text = "PAUSED"
 horizontal_alignment = 1
 
