@@ -23,7 +23,8 @@ func _on_area_entered(area):
 		$KnockTimer.start()
 		set_process(false)
 		while $KnockTimer.time_left > 0:
-			position.y -= 200 * delta
+			if !get_tree().paused:
+				position.y -= 200 * delta
 			await get_tree().create_timer(0.01 * delta).timeout
 
 func _on_knock_timer_timeout():
