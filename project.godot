@@ -10,11 +10,14 @@ config_version=5
 
 [application]
 
-config/name="shape space"
-run/main_scene="uid://cu3b6mcoi0h7n"
+config/name="yet another space shooter"
+config/version="0.0.1"
+run/main_scene="uid://coqoyt2w1at22"
 config/use_custom_user_dir=true
+config/custom_user_dir_name="JJ_GAMES/YASS"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=40
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
 boot_splash/image="uid://v6lnirwgguse"
@@ -88,3 +91,5 @@ quit={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/ssao/quality=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

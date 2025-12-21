@@ -15,13 +15,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 theme = ExtResource("1_3dyt8")
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
-z_index = -2
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 8
@@ -50,8 +43,9 @@ offset_right = 560.0
 offset_bottom = 255.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "press [SHIFT/ENTER/SPACE] to retry
-press [ESC] to quit"
+text = "press SHOOT to retry
+
+press QUIT to quit to title screen"
 horizontal_alignment = 1
 
 [node name="score" type="Label" parent="UI"]

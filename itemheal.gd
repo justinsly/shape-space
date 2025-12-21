@@ -18,4 +18,3 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	speed = 210
-	print("speed")

@@ -19,7 +19,7 @@ func load_score():
 	# managing files is scary.
 	# future jayden here: ok i think i kinda get it
 	if not FileAccess.file_exists("user://scoredata.jden"):
-		print("could not load save data: file doesnt exist yet")
+		print("could not load save data: file doesnt exist")
 		return
 	
 	var save_file = FileAccess.open("user://scoredata.jden", FileAccess.READ)
