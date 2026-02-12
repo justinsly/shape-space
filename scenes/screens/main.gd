@@ -44,7 +44,6 @@ func _on_player_explode():
 	await get_tree().create_timer(2).timeout
 	if playervars.hiscore > playervars.oldhiscore:
 		save_data()
-	# WARNING: when i finally decide to organize the game files,
-	# dont forget to change this file path
+	
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://arcadegameover.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/arcadegameover.tscn")
