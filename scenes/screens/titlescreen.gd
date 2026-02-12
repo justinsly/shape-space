@@ -5,6 +5,6 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://scenes/screens/main.tscn")
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

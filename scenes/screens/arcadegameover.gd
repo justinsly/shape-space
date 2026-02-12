@@ -19,7 +19,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("quit"):
 		print("quitting to title screen...")
-		get_tree().change_scene_to_file("res://titlescreen.tscn")
+		get_tree().change_scene_to_file("res://scenes/screens/titlescreen.tscn")
 	
 
 func _on_pulse():
