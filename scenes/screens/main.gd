@@ -33,6 +33,10 @@ func _on_player_heal():
 func _on_scoremanager_update():
 	$HUD/ScoreLabel.text = "score: %s" % playervars.score
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
+	
+	# FIXME: this shit gets intense the moment you reach a score of 3
+	#$enemyspawner.wait_time = $enemyspawner.wait_time + (((playervars.score * 0.5) * -1) + 0.4)
+	#print(str($enemyspawner.wait_time))
 
 
 

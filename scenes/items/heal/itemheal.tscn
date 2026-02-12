@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://5gspo75v0t7a"]
+[gd_scene format=3 uid="uid://5gspo75v0t7a"]
 
-[ext_resource type="Script" uid="uid://cm1dyyak50unm" path="res://itemheal.gd" id="1_rnfdl"]
-[ext_resource type="Texture2D" uid="uid://s68ut7xtd2pc" path="res://itemheal.png" id="1_ux6rp"]
+[ext_resource type="Script" uid="uid://cm1dyyak50unm" path="res://scenes/items/heal/itemheal.gd" id="1_rnfdl"]
+[ext_resource type="Texture2D" uid="uid://s68ut7xtd2pc" path="res://resources/textures/itemheal.png" id="1_ux6rp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnfdl"]
 size = Vector2(64, 64)
@@ -84,20 +84,20 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="itemheal" type="Area2D"]
+[node name="itemheal" type="Area2D" unique_id=2093868607]
 script = ExtResource("1_rnfdl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593411572]
 shape = SubResource("RectangleShape2D_rnfdl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=815748288]
 texture_filter = 1
 position = Vector2(-2.14577e-06, -2.14577e-06)
 scale = Vector2(1.88235, 1.88235)
 sprite_frames = SubResource("SpriteFrames_pd8oq")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+[node name="Timer" type="Timer" parent="." unique_id=428183161]
+wait_time = 0.5
 one_shot = true
 autostart = true
 

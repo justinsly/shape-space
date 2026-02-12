@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhycwib2yjk2"]
+[gd_scene format=3 uid="uid://mhycwib2yjk2"]
 
-[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="1_3dyt8"]
-[ext_resource type="Script" uid="uid://bg65yeggbh25b" path="res://arcadegameover.gd" id="1_xbt5m"]
-[ext_resource type="PackedScene" uid="uid://cu3b6mcoi0h7n" path="res://main.tscn" id="2_pdoka"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="1_3dyt8"]
+[ext_resource type="Script" uid="uid://bg65yeggbh25b" path="res://scenes/screens/arcadegameover.gd" id="1_xbt5m"]
+[ext_resource type="PackedScene" uid="uid://cu3b6mcoi0h7n" path="res://scenes/screens/main.tscn" id="2_pdoka"]
 
-[node name="arcadegameover" type="Node"]
+[node name="arcadegameover" type="Node" unique_id=1528588992]
 script = ExtResource("1_xbt5m")
 game = ExtResource("2_pdoka")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=256227185]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme = ExtResource("1_3dyt8")
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="UI" unique_id=1033894091]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "GAME OVER :("
 
-[node name="prompt" type="Label" parent="UI"]
+[node name="prompt" type="Label" parent="UI" unique_id=323463879]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,7 +48,7 @@ text = "press SHOOT to retry
 press QUIT to quit to title screen"
 horizontal_alignment = 1
 
-[node name="score" type="Label" parent="UI"]
+[node name="score" type="Label" parent="UI" unique_id=89507874]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

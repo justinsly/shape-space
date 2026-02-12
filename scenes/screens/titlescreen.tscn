@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://coqoyt2w1at22"]
+[gd_scene format=3 uid="uid://coqoyt2w1at22"]
 
-[ext_resource type="Script" uid="uid://clvoxhmr5d326" path="res://titlescreen.gd" id="1_cjnew"]
-[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="2_goadl"]
+[ext_resource type="Script" uid="uid://clvoxhmr5d326" path="res://scenes/screens/titlescreen.gd" id="1_cjnew"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="2_goadl"]
 [ext_resource type="Script" uid="uid://c0py1xgbklnim" path="res://debugdeletesavedata.gd" id="3_2bjoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pdex"]
 bg_color = Color(0.972549, 0, 0.1254902, 0.5137255)
 
-[node name="titlescreen" type="Node"]
+[node name="titlescreen" type="Node" unique_id=152194447]
 script = ExtResource("1_cjnew")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=316907107]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_goadl")
 
-[node name="titletext" type="Label" parent="UI"]
+[node name="titletext" type="Label" parent="UI" unique_id=1953102084]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +37,7 @@ text = "yet another
 space shooter"
 horizontal_alignment = 1
 
-[node name="hiscoretext" type="Label" parent="UI"]
+[node name="hiscoretext" type="Label" parent="UI" unique_id=1318982844]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,7 +54,7 @@ theme_override_font_sizes/font_size = 32
 text = "high score: 0"
 horizontal_alignment = 1
 
-[node name="starttext" type="Label" parent="UI"]
+[node name="starttext" type="Label" parent="UI" unique_id=938347108]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,7 +73,7 @@ text = "press SHOOT to start
 press QUIT to quit"
 horizontal_alignment = 1
 
-[node name="tutorialtext" type="Label" parent="UI"]
+[node name="tutorialtext" type="Label" parent="UI" unique_id=1718179918]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -88,7 +88,7 @@ text = "shoot: SHIFT/SPACE/ENTER
 quit: ESC"
 vertical_alignment = 2
 
-[node name="debugdeletesavedata" type="Button" parent="."]
+[node name="debugdeletesavedata" type="Button" parent="." unique_id=594316635]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -102,7 +102,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8pdex")
 text = "evil save data deletion button"
 script = ExtResource("3_2bjoa")
 
-[node name="Timer" type="Timer" parent="debugdeletesavedata"]
+[node name="Timer" type="Timer" parent="debugdeletesavedata" unique_id=257768289]
 wait_time = 2.5
 one_shot = true
 

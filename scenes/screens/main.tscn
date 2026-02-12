@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu3b6mcoi0h7n"]
+[gd_scene format=3 uid="uid://cu3b6mcoi0h7n"]
 
-[ext_resource type="Script" uid="uid://cy0itby661ct0" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://enemy.tscn" id="2_1bvp3"]
-[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://biguitext_theme.tres" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://cy0itby661ct0" path="res://scenes/screens/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://scenes/entities/enemies/enemy.tscn" id="2_1bvp3"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
 
@@ -13,36 +13,37 @@ size = Vector2(1274, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(100, 728)
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=399326169]
 script = ExtResource("1_h2yge")
 sceneenemy = ExtResource("2_1bvp3")
 
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=1550446609 instance=ExtResource("1_ig7tw")]
 position = Vector2(576, 553)
 
-[node name="border" type="StaticBody2D" parent="."]
+[node name="border" type="StaticBody2D" parent="." unique_id=29355565]
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="border" unique_id=1549653103]
 position = Vector2(558, -64)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="border"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="border" unique_id=1241727080]
 position = Vector2(563, 712)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border" unique_id=678151430]
 position = Vector2(-84, 324)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="border"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1801164904]
 position = Vector2(1232, 312)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="enemyspawner" type="Timer" parent="."]
+[node name="enemyspawner" type="Timer" parent="." unique_id=56657017]
+wait_time = 2.0
 autostart = true
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=966378367]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -50,35 +51,35 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("4_lquwl")
 
-[node name="HealthLabel" type="Label" parent="HUD"]
+[node name="HealthLabel" type="Label" parent="HUD" unique_id=896119358]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "health: 3"
 
-[node name="ScoreLabel" type="Label" parent="HUD"]
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=399315769]
 layout_mode = 0
 offset_top = 56.0
 offset_right = 235.0
 offset_bottom = 100.0
 text = "score: 0"
 
-[node name="HiscoreLabel" type="Label" parent="HUD"]
+[node name="HiscoreLabel" type="Label" parent="HUD" unique_id=1015457330]
 layout_mode = 0
 offset_left = 296.0
 offset_right = 619.0
 offset_bottom = 44.0
 text = "HI score: 0"
 
-[node name="scoremanager" type="Node" parent="." groups=["scoremanager"]]
+[node name="scoremanager" type="Node" parent="." unique_id=974389394 groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
 
-[node name="pauseHUD" type="CanvasLayer" parent="."]
+[node name="pauseHUD" type="CanvasLayer" parent="." unique_id=1975256091]
 process_mode = 3
 layer = 10
 visible = false
 
-[node name="pauseText" type="Label" parent="pauseHUD"]
+[node name="pauseText" type="Label" parent="pauseHUD" unique_id=719323912]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -94,7 +95,7 @@ theme = ExtResource("4_lquwl")
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="pausehandler" type="Node" parent="."]
+[node name="pausehandler" type="Node" parent="." unique_id=30974989]
 process_mode = 3
 script = ExtResource("6_7mycd")
 
