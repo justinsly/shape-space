@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy0itby661ct0" path="res://scenes/screens/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://scenes/entities/enemies/enemy.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dldmoatfffay2" path="res://scenes/entities/enemies/enemyGeneric/enemygeneric.tscn" id="2_2vgtk"]
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
@@ -15,7 +15,7 @@ size = Vector2(100, 728)
 
 [node name="Main" type="Node" unique_id=399326169]
 script = ExtResource("1_h2yge")
-sceneenemy = ExtResource("2_1bvp3")
+spawnable_enemies = Array[PackedScene]([ExtResource("2_2vgtk")])
 
 [node name="Player" parent="." unique_id=1550446609 instance=ExtResource("1_ig7tw")]
 position = Vector2(576, 553)

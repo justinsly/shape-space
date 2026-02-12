@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(124.444, 124.444)
 
-[node name="Enemy" type="Area2D" groups=["enemy"]]
+[node name="Enemy" type="Area2D" unique_id=1675273459 groups=["enemy"]]
 scale = Vector2(0.9, 0.9)
 collision_layer = 4
 collision_mask = 2
@@ -16,18 +16,18 @@ script = ExtResource("1_4gyqm")
 sceneboom = ExtResource("2_qi2p4")
 sceneheal = ExtResource("3_iifgy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1471123290]
 position = Vector2(2.11928e-06, 2.11928e-06)
 shape = SubResource("RectangleShape2D_4gyqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=288130812]
 texture = ExtResource("1_7k104")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1641499453]
 position = Vector2(1.14441e-05, 1.14441e-05)
 scale = Vector2(13.3333, 13.3333)
 
-[node name="KnockTimer" type="Timer" parent="."]
+[node name="KnockTimer" type="Timer" parent="." unique_id=1496727996]
 wait_time = 0.5
 one_shot = true
 

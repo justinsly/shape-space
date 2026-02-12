@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal hit
 signal dieded
+@warning_ignore("unused_signal")
 signal heal
 signal explode
 
