@@ -47,7 +47,7 @@ func explode():
 	var boom = sceneboom.instantiate()
 	boom.position = position
 	add_sibling(boom)
-	boom.act(1.5)
+	boom.act(boom_speed_mult)
 	if drop_heal_item_on_death and playervars.health < 3:
 		# if the player's health is not full, roll a chance to drop a healing item
 		if randf_range(0, 12) <= 4:
