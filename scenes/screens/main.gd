@@ -1,10 +1,10 @@
 extends Node
 
 ## the list of enemies that can be spawned.
-##
 ## [br]
 ## to add a new entry: click on "Add Element" and then select a scene
-@export var spawnable_enemies: Array[PackedScene]
+@export var starting_spawnable_enemies: Array[PackedScene]
+@export var advanced_spawnable_enemies: Array[PackedScene]
 
 func _ready():
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
@@ -21,8 +21,8 @@ func save_data():
 	print("data saved")
 
 func _on_enemyspawner_timeout():
-	var sceneenemy = spawnable_enemies.pick_random()
-	print(sceneenemy)
+	var sceneenemy = starting_spawnable_enemies.pick_random()
+	#print(sceneenemy)
 	var enemy = sceneenemy.instantiate()
 	enemy.initialize(randf_range(8.0, 1144.0), -47)
 	add_child(enemy)
