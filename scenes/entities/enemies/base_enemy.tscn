@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bghrp62um8uew"]
+
+[ext_resource type="Script" uid="uid://5khgya2t21u8" path="res://scenes/entities/enemies/base_enemy.gd" id="1_3yt4f"]
+[ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_l1vo8"]
+[ext_resource type="PackedScene" uid="uid://5gspo75v0t7a" path="res://scenes/items/heal/itemheal.tscn" id="3_0imhs"]
+[ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="4_0ln7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0gqf"]
+size = Vector2(124.444, 124.444)
+
+[node name="BaseEnemy" type="Area2D" unique_id=1519813947 node_paths=PackedStringArray("knock_timer") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3yt4f")
+bounce_on_hit = true
+drop_heal_item_on_death = true
+knock_timer = NodePath("KnockTimer")
+sceneboom = ExtResource("2_l1vo8")
+sceneheal = ExtResource("3_0imhs")
+metadata/_custom_type_script = "uid://bqgnae0j5ughc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=287658904]
+position = Vector2(2.11928e-06, 2.11928e-06)
+shape = SubResource("RectangleShape2D_e0gqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=486908284]
+texture = ExtResource("4_0ln7m")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=188051190]
+position = Vector2(1.356338e-05, 1.356338e-05)
+scale = Vector2(13.3333, 13.3333)
+
+[node name="KnockTimer" type="Timer" parent="." unique_id=44552740]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
+[connection signal="timeout" from="KnockTimer" to="." method="_on_knock_timer_timeout"]

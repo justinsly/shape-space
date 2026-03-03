@@ -3,22 +3,23 @@
 [ext_resource type="Script" uid="uid://bgvteqmi1hhja" path="res://scenes/entities/projectiles/playerbullet/bullet.gd" id="1_v7oki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtl8c"]
-size = Vector2(32, 80)
+size = Vector2(32, 64)
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" unique_id=222002075]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_v7oki")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=162499824]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_rtl8c")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=979343862]
 color = Color(0.960784, 0.894118, 0.447059, 1)
-polygon = PackedVector2Array(16, -40, 0, -48, -16, -40, -16, -8, 0, 48, 16, -8)
+polygon = PackedVector2Array(12, -40, 0, -48, -12, -40, -12, -8, 0, 48, 12, -8)
 uv = PackedVector2Array(16, -40, 0, -48, -16, -40, -16, 24, 16, 24)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1120805039]
 position = Vector2(-2.27374e-13, 0)
 scale = Vector2(3.2, 5.6)
 

@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dldmoatfffay2"]
-
-[ext_resource type="PackedScene" uid="uid://b2koh0mt0vlsw" path="res://scenes/entities/enemies/enemy.tscn" id="1_3kvpr"]
-
-[node name="Enemy" unique_id=1675273459 instance=ExtResource("1_3kvpr")]
-bounce_on_hit = true
-drop_heal_item_on_death = true

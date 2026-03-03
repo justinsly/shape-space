@@ -85,6 +85,8 @@ animations = [{
 }]
 
 [node name="itemheal" type="Area2D" unique_id=2093868607]
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("1_rnfdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593411572]

@@ -11,7 +11,7 @@ game = ExtResource("2_pdoka")
 [node name="UI" type="Control" parent="." unique_id=256227185]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
+offset_right = 1064.0
 offset_bottom = 648.0
 theme = ExtResource("1_3dyt8")
 

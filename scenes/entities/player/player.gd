@@ -8,9 +8,9 @@ signal explode
 
 # NOTE: i have no freaking idea on what am i doing but i didnt bother searching up a better method, so for now this signal handles the flickering during iframes
 signal flickerframe
-# the bullet scene
+## the bullet scene
 @export var scenebullet: PackedScene
-# the explosion effect scene
+## the explosion effect scene
 @export var sceneboom: PackedScene
 var speed = 550
 # used for delays between shots

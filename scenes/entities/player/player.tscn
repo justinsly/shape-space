@@ -14,7 +14,7 @@ size = Vector2(100, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(140, 140)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1727827527 groups=["player"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 5
@@ -23,35 +23,37 @@ script = ExtResource("1_onrkg")
 scenebullet = ExtResource("2_i3pqv")
 sceneboom = ExtResource("3_hqtel")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428833970]
 texture = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=928287855]
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="FireTimer" type="Timer" parent="."]
+[node name="FireTimer" type="Timer" parent="." unique_id=1451091737]
 wait_time = 0.5
 one_shot = true
 
-[node name="IframeTimer" type="Timer" parent="."]
+[node name="IframeTimer" type="Timer" parent="." unique_id=210387425]
 wait_time = 1.5
 one_shot = true
 
-[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=143338424 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=56198847]
 position = Vector2(-3.57628e-06, -3.57628e-06)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="DeathOffscreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="DeathOffscreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=766551385]
 position = Vector2(-4.76837e-06, -4.76837e-06)
 scale = Vector2(8, 8)
 
-[node name="itemhitbox" type="Area2D" parent="." groups=["plritem"]]
+[node name="itemhitbox" type="Area2D" parent="." unique_id=1169369716 groups=["plritem"]]
+collision_layer = 8
+collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="itemhitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemhitbox" unique_id=1293892515]
 position = Vector2(-7.15256e-06, -7.15256e-06)
 shape = SubResource("RectangleShape2D_hqtel")
 
