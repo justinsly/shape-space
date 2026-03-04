@@ -9,6 +9,7 @@ func _ready():
 	$HUD/HiscoreLabel.text = "HI score: %s" % playervars.hiscore
 	playervars.health = 3
 	playervars.score = 0
+	playervars.oldhiscore = playervars.hiscore
 	print("main scene ready!")
 
 func save_data():
