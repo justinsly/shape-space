@@ -10,6 +10,7 @@ signal knockback_taken ## emitted by [method Enemy.take_knockback]
 
 @export var max_health: int = 1 ## the starting health for the enemy
 @export var speed: int = 250 ## do i need to write a description for this
+@export var score: int = 1 ## seriously
 @export var bounce_on_hit: bool ## determines if the enemy should move backward a little bit upon hitting the player
 @export var drop_heal_item_on_death: bool ## determines if the enemy should drop the healing item upon being destroyed
 @export var bounce_on_damage: bool ## determines if the enemy should move backward upon taking damage
@@ -19,7 +20,10 @@ signal knockback_taken ## emitted by [method Enemy.take_knockback]
 @export_group("Preloaded Scenes")
 @export var sceneboom: PackedScene ## explosion effect scene
 @export var sceneheal: PackedScene ## the healing item scene to be dropped
-var health := max_health
+var health := 1
+
+func _ready():
+	health = max_health
 
 ## normally should be run by whatever is handling the spawning of the enemies, repositions the enemy to the given [param startposx] and [param startposy] coordinates
 func initialize(startposx: float, startposy: float):
@@ -29,9 +33,11 @@ func initialize(startposx: float, startposy: float):
 ## emits [signal Enemy.damage_taken] and passes the [code]dmg[/code]
 ## argument to the said signal when called.[br]
 ## intended to be used by other scenes interacting with this enemy
-func take_damage(dmg: int = 1):
+func take_damage(dmg: int = 1, override_damage_bounce = bounce_on_damage):
 	var oldhealth = health
 	health -= dmg
+	if override_damage_bounce:
+		take_knockback()
 	damage_taken.emit(dmg, oldhealth)
 
 
@@ -50,7 +56,7 @@ func take_knockback(pixels_per_step: float = 200):
 		await get_tree().create_timer(0.01 * delta).timeout
 
 ## spawns [member Enemy.sceneboom] at the enemy position, drops the heal item if [param dropstuff] and [member Enemy.drop_heal_item_on_death] is true, adds [param score] to the player's score, and then deletes itself
-func explode(dropstuff: bool = true, score: int = 1):
+func explode(dropstuff: bool = true, overridescore: int = score):
 	var boom = sceneboom.instantiate()
 	boom.position = position
 	add_sibling(boom)
@@ -61,5 +67,5 @@ func explode(dropstuff: bool = true, score: int = 1):
 			var healitem = sceneheal.instantiate()
 			healitem.position = position
 			call_deferred("add_sibling", healitem)
-	playervars.score += score
+	playervars.score += overridescore
 	queue_free()

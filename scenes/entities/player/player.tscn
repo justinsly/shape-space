@@ -30,7 +30,7 @@ texture = ExtResource("1_4flbx")
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1451091737]
-wait_time = 0.5
+wait_time = 0.59
 one_shot = true
 
 [node name="IframeTimer" type="Timer" parent="." unique_id=210387425]

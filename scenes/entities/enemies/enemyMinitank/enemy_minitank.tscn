@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bc30wi8bxf4bw"]
+
+[ext_resource type="PackedScene" uid="uid://bghrp62um8uew" path="res://scenes/entities/enemies/enemyGeneric/base_enemy.tscn" id="1_fgcn6"]
+
+[node name="EnemyMinitank" unique_id=1519813947 instance=ExtResource("1_fgcn6")]
+max_health = 3
+speed = 175
+score = 2
+bounce_on_damage = true
+boom_speed_mult = 0.8
+
+[node name="Sprite2D" parent="." index="1" unique_id=486908284]
+self_modulate = Color(1, 0.7921569, 0.8901961, 1)
