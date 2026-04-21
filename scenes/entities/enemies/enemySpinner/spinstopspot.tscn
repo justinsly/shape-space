@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://0jhpw3jidl3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mxa8"]
+size = Vector2(128, 16)
+
+[node name="Spinstopspot" type="Area2D" unique_id=1269444195 groups=["spinstopper"]]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+metadata/collisionID = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1519941658]
+shape = SubResource("RectangleShape2D_4mxa8")
+debug_color = Color(0.18039216, 0.6431373, 0, 0.2627451)

@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_l1vo8"]
 [ext_resource type="PackedScene" uid="uid://5gspo75v0t7a" path="res://scenes/items/heal/itemheal.tscn" id="3_0imhs"]
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="4_0ln7m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0gqf"]
-size = Vector2(124.444, 124.444)
+[ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="4_bsmmt"]
 
 [node name="BaseEnemy" type="Area2D" unique_id=1519813947 node_paths=PackedStringArray("knock_timer") groups=["enemy"]]
 collision_layer = 4
@@ -21,7 +19,7 @@ metadata/_custom_type_script = "uid://bqgnae0j5ughc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=287658904]
 position = Vector2(2.11928e-06, 2.11928e-06)
-shape = SubResource("RectangleShape2D_e0gqf")
+shape = ExtResource("4_bsmmt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=486908284]
 texture = ExtResource("4_0ln7m")

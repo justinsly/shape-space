@@ -24,13 +24,10 @@ func _on_enemyspawner_timeout():
 	var sceneenemy = spawnable_enemies.pick_random()
 	if randi_range(1, 10) == 10:
 		sceneenemy = spawnable_enemies.pick_random() # change this to rare_spawnable_enemies once we actually add enemies to that list
-	else:
-		sceneenemy = spawnable_enemies.pick_random()
 	#print(sceneenemy)
 	var enemy = sceneenemy.instantiate()
 	enemy.initialize(randf_range(16.0, 1048.0), -47)
 	add_child(enemy)
-
 
 func _on_player_hit():
 	$HUD/HealthLabel.text = "health: %s" % playervars.health

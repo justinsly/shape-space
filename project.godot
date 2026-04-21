@@ -96,6 +96,8 @@ quit={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="wall border"
+2d_physics/layer_5="items"
+2d_physics/layer_6="spinstopper"
 
 [rendering]
 

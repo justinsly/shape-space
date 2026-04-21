@@ -7,6 +7,7 @@ class_name Enemy
 
 signal damage_taken(dmg_amount: int, oldhealth: int) ## emitted by [method Enemy.take_damage]. [param dmg_amount] is the amount of damage that was dealt, [param oldhealth] is the health before the damage was dealt
 signal knockback_taken ## emitted by [method Enemy.take_knockback]
+signal initialized ## emitted by [method Enemy.initialize] by default unless if it was called with [param emit_init_signal] set to [param false]
 
 @export var max_health: int = 1 ## the starting health for the enemy
 @export var speed: int = 250 ## do i need to write a description for this
@@ -26,9 +27,11 @@ func _ready():
 	health = max_health
 
 ## normally should be run by whatever is handling the spawning of the enemies, repositions the enemy to the given [param startposx] and [param startposy] coordinates
-func initialize(startposx: float, startposy: float):
+func initialize(startposx: float, startposy: float, emit_init_signal: bool = true):
 	position.x = startposx
 	position.y = startposy
+	if emit_init_signal:
+		initialized.emit()
 
 ## emits [signal Enemy.damage_taken] and passes the [code]dmg[/code]
 ## argument to the said signal when called.[br]
@@ -57,10 +60,11 @@ func take_knockback(pixels_per_step: float = 200):
 
 ## spawns [member Enemy.sceneboom] at the enemy position, drops the heal item if [param dropstuff] and [member Enemy.drop_heal_item_on_death] is true, adds [param score] to the player's score, and then deletes itself
 func explode(dropstuff: bool = true, overridescore: int = score):
-	var boom = sceneboom.instantiate()
+	var boom := sceneboom.instantiate()
 	boom.position = position
 	add_sibling(boom)
-	boom.act(boom_speed_mult)
+	if boom.has_method("act"):
+		boom.act(boom_speed_mult)
 	if drop_heal_item_on_death and playervars.health < 3 and dropstuff:
 		# if the player's health is not full, roll a chance to drop a healing item
 		if randf_range(0, 12) <= 4:
