@@ -15,6 +15,7 @@ signal initialized ## emitted by [method Enemy.initialize] by default unless if 
 @export var bounce_on_hit: bool ## determines if the enemy should move backward a little bit upon hitting the player
 @export var drop_heal_item_on_death: bool ## determines if the enemy should drop the healing item upon being destroyed
 @export var bounce_on_damage: bool ## determines if the enemy should move backward upon taking damage
+@export var flash_on_damage: bool = true ## determines if the enemy should flash white upon taking damage, neat visual feedback
 @export var boom_speed_mult: float = 1.5 ## the multiplier to apply to the explosion effect's speed
 @export_group("nodes")
 @export var knock_timer: Timer ## the knock timer, that knock timer, the timer used specifically to tell how long should a knockback go, that timer
@@ -36,13 +37,24 @@ func initialize(startposx: float, startposy: float, emit_init_signal: bool = tru
 ## emits [signal Enemy.damage_taken] and passes the [code]dmg[/code]
 ## argument to the said signal when called.[br]
 ## intended to be used by other scenes interacting with this enemy
-func take_damage(dmg: int = 1, override_damage_bounce = bounce_on_damage):
+func take_damage(dmg: int = 1, override_damage_flash = flash_on_damage, override_damage_bounce = bounce_on_damage):
 	var oldhealth = health
 	health -= dmg
 	if override_damage_bounce:
 		take_knockback()
 	damage_taken.emit(dmg, oldhealth)
+	if override_damage_flash:
+		flash()
 
+func flash(duration: float = 0.1):
+	if not is_inside_tree():
+		print("cant flash when im not in a tree!!!")
+		return
+	var ogcolors := modulate
+	modulate = Color(10, 10, 10)
+	await get_tree().create_timer(duration).timeout
+	modulate = ogcolors
+	print("flash")
 
 ## activates [member Enemy.knock_timer] and causes the enemy to go backward for the duration of the timer every 0.01 * [param delta] seconds if [member Enemy.bounce_on_hit] is true (the distance per step in pixels depends on [param pixels_per_step] * delta)[br]
 ## [br][b]note:[/b] [param delta] is only calculated once when this function is called, but i dont think that should be a problem[br]

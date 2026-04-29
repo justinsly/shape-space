@@ -43,9 +43,10 @@ func dothespin(dir: int = 0):
 	else:
 		while spinning:
 			var delta = get_process_delta_time()
-			if get_tree().is_paused():
-				await get_tree().create_timer(delta).timeout
-				continue
+			if is_inside_tree():
+				if get_tree().is_paused():
+					await get_tree().create_timer(delta).timeout
+					continue
 			var movedir = Vector2.UP.rotated(rotation) * speed
 			rotation += PI * delta
 			position += movedir * delta
