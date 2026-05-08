@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d2xmjt7gon5id"]
+
+[node name="screenborder" type="Node2D" unique_id=305851217]
+
+[node name="Control" type="Control" parent="." unique_id=727732293]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1786240258]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 648.0
+color = Color(0.33511627, 0.33511627, 0.33511627, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1944097678]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1088.0
+offset_bottom = 648.0
+color = Color(0.33511627, 0.33511627, 0.33511627, 1)

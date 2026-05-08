@@ -8,16 +8,26 @@
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cbpt1tqlwf1bv" path="res://resources/textures/healhud.png" id="7_htic3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1274, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(101, 728)
+size = Vector2(301, 728)
 
-[node name="Main" type="Node" unique_id=399326169]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftx24"]
+size = Vector2(275.5, 728)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htic3"]
+size = Vector2(32.000004, 50.66664)
+
+[node name="Main" type="Node" unique_id=399326169 node_paths=PackedStringArray("HiscoreLabel", "ScoreLabel", "HealthHud")]
 script = ExtResource("1_h2yge")
 spawnable_enemies = Array[PackedScene]([ExtResource("2_2vgtk"), ExtResource("3_tkjme"), ExtResource("4_ftx24")])
+HiscoreLabel = NodePath("HUD/HiscoreLabel")
+ScoreLabel = NodePath("HUD/ScoreLabel")
+HealthHud = NodePath("HUD/HealthHud")
 
 [node name="Player" parent="." unique_id=1550446609 instance=ExtResource("1_ig7tw")]
 position = Vector2(576, 553)
@@ -34,12 +44,12 @@ position = Vector2(563, 712)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border" unique_id=678151430]
-position = Vector2(-82.5, 324)
+position = Vector2(17.5, 324)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1801164904]
-position = Vector2(1145, 312)
-shape = SubResource("RectangleShape2D_ig7tw")
+position = Vector2(1057.75, 312)
+shape = SubResource("RectangleShape2D_ftx24")
 
 [node name="enemyspawner" type="Timer" parent="." unique_id=56657017]
 wait_time = 1.7999999999999998
@@ -47,31 +57,48 @@ autostart = true
 
 [node name="HUD" type="Control" parent="." unique_id=966378367]
 z_index = 1
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_right = -192.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_lquwl")
 
-[node name="HealthLabel" type="Label" parent="HUD" unique_id=896119358]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "health: 3"
-
 [node name="ScoreLabel" type="Label" parent="HUD" unique_id=399315769]
-layout_mode = 0
-offset_top = 56.0
+layout_mode = 1
+offset_top = 48.0
 offset_right = 235.0
-offset_bottom = 100.0
+offset_bottom = 92.0
 text = "score: 0"
 
 [node name="HiscoreLabel" type="Label" parent="HUD" unique_id=1015457330]
-layout_mode = 0
-offset_left = 296.0
-offset_right = 619.0
+layout_mode = 1
+offset_right = 323.0
 offset_bottom = 44.0
 text = "HI score: 0"
+
+[node name="HealthHud" type="Sprite2D" parent="HUD" unique_id=1018957908]
+position = Vector2(704, 552)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("7_htic3")
+centered = false
+hframes = 7
+frame = 3
+
+[node name="healthzone" type="Area2D" parent="HUD/HealthHud" unique_id=1251853617]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/HealthHud/healthzone" unique_id=640057447]
+position = Vector2(16, 17.333374)
+shape = SubResource("RectangleShape2D_htic3")
+debug_color = Color(0.521151, 0.5740061, 5.7756904e-07, 0.16700001)
 
 [node name="scoremanager" type="Node" parent="." unique_id=974389394 groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
@@ -105,4 +132,6 @@ script = ExtResource("6_7mycd")
 [connection signal="heal" from="Player" to="." method="_on_player_heal"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="enemyspawner" to="." method="_on_enemyspawner_timeout"]
+[connection signal="area_entered" from="HUD/HealthHud/healthzone" to="." method="_on_healthzone_area_entered"]
+[connection signal="area_exited" from="HUD/HealthHud/healthzone" to="." method="_on_healthzone_area_exited"]
 [connection signal="update" from="scoremanager" to="." method="_on_scoremanager_update"]

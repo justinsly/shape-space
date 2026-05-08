@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cbqxeq6457yy2"]
+
+[ext_resource type="Script" uid="uid://uq3gptorwby1" path="res://scenes/screens/loading_screen.gd" id="1_fywt6"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="1_o7q6f"]
+
+[node name="LoadingScreen" type="Node2D" unique_id=1975410413]
+script = ExtResource("1_fywt6")
+
+[node name="Label" type="Label" parent="." unique_id=2128594472]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 392.0
+offset_top = 296.0
+offset_right = 685.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o7q6f")
+text = "LOADING..."

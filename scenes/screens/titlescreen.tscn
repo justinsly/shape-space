@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clvoxhmr5d326" path="res://scenes/screens/titlescreen.gd" id="1_cjnew"]
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="2_goadl"]
+[ext_resource type="PackedScene" uid="uid://cu3b6mcoi0h7n" path="res://scenes/screens/main.tscn" id="2_owb6x"]
 [ext_resource type="Script" uid="uid://c0py1xgbklnim" path="res://debugdeletesavedata.gd" id="3_2bjoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pdex"]
@@ -9,6 +10,7 @@ bg_color = Color(0.972549, 0, 0.1254902, 0.5137255)
 
 [node name="titlescreen" type="Node" unique_id=152194447]
 script = ExtResource("1_cjnew")
+game = ExtResource("2_owb6x")
 
 [node name="UI" type="Control" parent="." unique_id=316907107]
 layout_mode = 3
@@ -78,9 +80,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
+offset_left = 192.0
 offset_top = -112.0
-offset_right = 727.0
+offset_right = 895.0
 offset_bottom = -21.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
@@ -92,10 +94,10 @@ vertical_alignment = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -280.0
-offset_top = 16.0
-offset_right = -8.0
-offset_bottom = 72.0
+offset_left = -472.0
+offset_top = 8.0
+offset_right = -200.0
+offset_bottom = 64.0
 grow_horizontal = 0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_8pdex")

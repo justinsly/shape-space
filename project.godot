@@ -31,10 +31,12 @@ boot_splash/minimum_display_time=50
 [autoload]
 
 playervars="*res://playervars.gd"
+Screenborder="*uid://d2xmjt7gon5id"
+loadinghandler="*uid://fhdhrdq111b7"
 
 [display]
 
-window/size/viewport_width=1064
+window/size/viewport_width=1088
 window/size/sharp_corners=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false

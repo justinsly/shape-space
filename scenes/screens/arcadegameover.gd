@@ -2,25 +2,26 @@ extends Node
 
 signal pulse
 var oldscore = playervars.oldhiscore
-@export var game: PackedScene
+@export var scorelabel: Label
 
 func _ready():
 	if playervars.hiscore > oldscore:
-		$UI/score.text = "  NEW RECORD  \nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
+		scorelabel.text = "  NEW RECORD  \nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
 		pulse.emit()
 		playervars.oldhiscore = playervars.hiscore
 	else:
-		$UI/score.text = "SCORE: %s\nHIGH SCORE: %s" % [playervars.score, playervars.hiscore]
+		scorelabel.text = "SCORE: %s\nHIGH SCORE: %s" % [playervars.score, playervars.hiscore]
 
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		await get_tree().create_timer(0.2).timeout
-		get_tree().change_scene_to_packed(game)
+		loadinghandler.initiateloadingscreen("res://scenes/screens/main.tscn")
+		queue_free()
 	
 	if Input.is_action_just_pressed("quit"):
 		print("quitting to title screen...")
-		get_tree().change_scene_to_file("res://scenes/screens/titlescreen.tscn")
-	
+		loadinghandler.initiateloadingscreen("res://scenes/screens/titlescreen.tscn")
+		queue_free()
 
 func _on_pulse():
 	while true:
@@ -29,6 +30,6 @@ func _on_pulse():
 		await get_tree().create_timer(1).timeout
 		if not is_inside_tree():
 			return
-		$UI/score.text = "! NEW RECORD !\nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
+		scorelabel.text = "! NEW RECORD !\nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
 		await get_tree().create_timer(1).timeout
-		$UI/score.text = "  NEW RECORD  \nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
+		scorelabel.text = "  NEW RECORD  \nCURRENT SCORE: %s\nPREVIOUS HIGH SCORE: %s" % [playervars.score, oldscore]
