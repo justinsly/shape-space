@@ -69,7 +69,7 @@ func activate_spinstopper(delay: float, thenode):
 
 func _on_area_entered(area: Area2D):
 	if area.has_meta("collisionID") && area.get_meta("collisionID") == magicnumber:
-		print("trying to stop spinning")
+		print_verbose("trying to stop spinning")
 		spinning = false
 		moving = true
 		rotation_degrees = 180.0

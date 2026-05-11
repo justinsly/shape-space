@@ -54,7 +54,6 @@ func flash(duration: float = 0.1):
 	modulate = Color(10, 10, 10)
 	await get_tree().create_timer(duration).timeout
 	modulate = ogcolors
-	print("flash")
 
 ## activates [member Enemy.knock_timer] and causes the enemy to go backward for the duration of the timer every 0.01 * [param delta] seconds if [member Enemy.bounce_on_hit] is true (the distance per step in pixels depends on [param pixels_per_step] * delta)[br]
 ## [br][b]note:[/b] [param delta] is only calculated once when this function is called, but i dont think that should be a problem[br]

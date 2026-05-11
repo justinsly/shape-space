@@ -7,6 +7,7 @@ extends Node
 @export var HiscoreLabel: Label
 @export var ScoreLabel: Label
 @export var HealthHud: Sprite2D
+var fadetween
 
 func _ready():
 	HiscoreLabel.text = "HI score: %s" % playervars.hiscore
@@ -62,9 +63,19 @@ func _on_player_explode():
 
 func _on_healthzone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		HealthHud.modulate = Color(1, 1, 1, 0.5)
+		if fadetween:
+			fadetween.kill()
+		fadetween = create_tween()
+		fadetween.set_trans(Tween.TRANS_EXPO)
+		fadetween.set_ease(Tween.EASE_OUT)
+		fadetween.tween_property(HealthHud, "modulate", Color(1, 1, 1, 0.5), 0.5)
 
 
 func _on_healthzone_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		HealthHud.modulate = Color(1, 1, 1, 1)
+		if fadetween:
+			fadetween.kill()
+		fadetween = create_tween()
+		fadetween.set_trans(Tween.TRANS_EXPO)
+		fadetween.set_ease(Tween.EASE_OUT)
+		fadetween.tween_property(HealthHud, "modulate", Color(1, 1, 1, 1), 0.5)
