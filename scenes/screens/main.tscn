@@ -9,18 +9,56 @@
 [ext_resource type="Script" uid="uid://ka2g0ttpsknb" path="res://scoremanager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cbpt1tqlwf1bv" path="res://resources/textures/healhud.png" id="7_htic3"]
+[ext_resource type="Texture2D" uid="uid://dcku5ge3alk1o" path="res://resources/textures/hudcontainer.png" id="7_sa82p"]
+[ext_resource type="Texture2D" uid="uid://da4farjvw3j48" path="res://resources/textures/healthwarnlight.png" id="9_n2jqv"]
+[ext_resource type="Texture2D" uid="uid://btj5d1i6rf47q" path="res://resources/textures/leftedge.png" id="10_woqya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(1274, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(301, 728)
+size = Vector2(291, 728)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftx24"]
-size = Vector2(275.5, 728)
+size = Vector2(494, 728)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_htic3"]
-size = Vector2(32.000004, 50.66664)
+[sub_resource type="Animation" id="Animation_n2jqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_woqya"]
+resource_name = "healthwarningbeep"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5y6l"]
+_data = {
+&"RESET": SubResource("Animation_n2jqv"),
+&"healthwarningbeep": SubResource("Animation_woqya")
+}
 
 [node name="Main" type="Node" unique_id=399326169 node_paths=PackedStringArray("HiscoreLabel", "ScoreLabel", "HealthHud")]
 script = ExtResource("1_h2yge")
@@ -28,11 +66,13 @@ spawnable_enemies = Array[PackedScene]([ExtResource("2_2vgtk"), ExtResource("3_t
 HiscoreLabel = NodePath("HUD/HiscoreLabel")
 ScoreLabel = NodePath("HUD/ScoreLabel")
 HealthHud = NodePath("HUD/HealthHud")
+metadata/_edit_vertical_guides_ = [32.0, 64.0]
 
 [node name="Player" parent="." unique_id=1550446609 instance=ExtResource("1_ig7tw")]
-position = Vector2(576, 553)
+position = Vector2(336, 553)
 
 [node name="border" type="StaticBody2D" parent="." unique_id=29355565]
+position = Vector2(-136, 0)
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="border" unique_id=1549653103]
@@ -44,11 +84,11 @@ position = Vector2(563, 712)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border" unique_id=678151430]
-position = Vector2(17.5, 324)
+position = Vector2(12.5, 324)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1801164904]
-position = Vector2(1057.75, 312)
+position = Vector2(1053, 315)
 shape = SubResource("RectangleShape2D_ftx24")
 
 [node name="enemyspawner" type="Timer" parent="." unique_id=56657017]
@@ -62,27 +102,37 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 192.0
-offset_right = -192.0
+offset_left = 56.0
+offset_right = -328.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_lquwl")
 
+[node name="HudContainer" type="Sprite2D" parent="HUD" unique_id=507978102]
+position = Vector2(848, 324.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("7_sa82p")
+
 [node name="ScoreLabel" type="Label" parent="HUD" unique_id=399315769]
 layout_mode = 1
-offset_top = 48.0
-offset_right = 235.0
-offset_bottom = 92.0
-text = "score: 0"
+offset_left = 658.0
+offset_top = 28.0
+offset_right = 1043.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
+text = "0"
 
 [node name="HiscoreLabel" type="Label" parent="HUD" unique_id=1015457330]
 layout_mode = 1
-offset_right = 323.0
-offset_bottom = 44.0
-text = "HI score: 0"
+offset_left = 658.0
+offset_top = 126.0
+offset_right = 1050.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0.5019608, 1, 0.5019608, 1)
+text = "0"
 
 [node name="HealthHud" type="Sprite2D" parent="HUD" unique_id=1018957908]
-position = Vector2(704, 552)
+position = Vector2(764, 324)
 rotation = 1.5707964
 scale = Vector2(3, 3)
 texture = ExtResource("7_htic3")
@@ -90,15 +140,19 @@ centered = false
 hframes = 7
 frame = 3
 
-[node name="healthzone" type="Area2D" parent="HUD/HealthHud" unique_id=1251853617]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
+[node name="Healthwarning" type="Sprite2D" parent="HUD" unique_id=1996473002]
+position = Vector2(788, 333)
+scale = Vector2(3, 3)
+texture = ExtResource("9_n2jqv")
+hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/HealthHud/healthzone" unique_id=640057447]
-position = Vector2(16, 17.333374)
-shape = SubResource("RectangleShape2D_htic3")
-debug_color = Color(0.521151, 0.5740061, 5.7756904e-07, 0.16700001)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Healthwarning" unique_id=423716299]
+libraries/ = SubResource("AnimationLibrary_x5y6l")
+
+[node name="Leftedge" type="Sprite2D" parent="HUD" unique_id=333069033]
+position = Vector2(-31, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("10_woqya")
 
 [node name="scoremanager" type="Node" parent="." unique_id=974389394 groups=["scoremanager"]]
 script = ExtResource("5_lquwl")
@@ -114,10 +168,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -22.0
-offset_right = 88.0
-offset_bottom = 22.0
+offset_left = -256.0
+offset_top = -20.0
+offset_right = -80.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_lquwl")
@@ -132,6 +186,4 @@ script = ExtResource("6_7mycd")
 [connection signal="heal" from="Player" to="." method="_on_player_heal"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="enemyspawner" to="." method="_on_enemyspawner_timeout"]
-[connection signal="area_entered" from="HUD/HealthHud/healthzone" to="." method="_on_healthzone_area_entered"]
-[connection signal="area_exited" from="HUD/HealthHud/healthzone" to="." method="_on_healthzone_area_exited"]
 [connection signal="update" from="scoremanager" to="." method="_on_scoremanager_update"]

@@ -20,23 +20,21 @@ run/main_scene="uid://coqoyt2w1at22"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="JJ_GAMES/YASS"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=40
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
-boot_splash/image="uid://v6lnirwgguse"
+boot_splash/image="uid://cvrht8k0vp3k8"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=50
 
 [autoload]
 
 playervars="*res://playervars.gd"
-Screenborder="*uid://d2xmjt7gon5id"
 loadinghandler="*uid://fhdhrdq111b7"
 
 [display]
 
-window/size/viewport_width=1088
 window/size/sharp_corners=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
@@ -48,10 +46,6 @@ window/vsync/vsync_mode=0
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
-
-[global_group]
-
-enemy=""
 
 [input]
 
@@ -103,6 +97,7 @@ quit={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/ssao/quality=0

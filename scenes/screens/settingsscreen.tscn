@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dx4hsndyfwnua"]
+
+[ext_resource type="Script" uid="uid://cxo5si0lblklh" path="res://scenes/screens/settingsscreen.gd" id="1_3nq1c"]
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="1_igxeh"]
+[ext_resource type="Script" uid="uid://c0py1xgbklnim" path="res://debugdeletesavedata.gd" id="2_3nq1c"]
+[ext_resource type="Theme" uid="uid://c4tyxvuavkb1g" path="res://resources/tabuitheme.tres" id="4_xsnb3"]
+[ext_resource type="Texture2D" uid="uid://d1qysdgoq2ree" path="res://resources/textures/ui/optionsaudio.png" id="5_ydnem"]
+
+[node name="settingsscreen" type="Node" unique_id=413880983]
+script = ExtResource("1_3nq1c")
+
+[node name="UI" type="Control" parent="." unique_id=170211008]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_igxeh")
+
+[node name="backbutton" type="Button" parent="UI" unique_id=1653029249]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 399.0
+offset_bottom = 108.0
+text = "back (ESC)"
+
+[node name="debugdeletesavedata" type="Button" parent="UI" unique_id=1484718250]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 144.0
+offset_top = 204.0
+offset_right = 508.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.5411765, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.5411765, 0.5411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.5411765, 0.5411765, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.5411765, 0.5411765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 1)
+text = "delete data"
+script = ExtResource("2_3nq1c")
+
+[node name="Timer" type="Timer" parent="UI/debugdeletesavedata" unique_id=1552459262]
+wait_time = 2.5
+one_shot = true
+
+[node name="TabContainer" type="TabContainer" parent="UI" unique_id=535409498]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 128.0
+offset_right = 928.0
+offset_bottom = 512.0
+theme = ExtResource("4_xsnb3")
+current_tab = 0
+switch_on_drag_hover = false
+tabs_rearrange_group = 0
+tab_0/icon = ExtResource("5_ydnem")
+
+[node name="Audio" type="Control" parent="UI/TabContainer" unique_id=1129068074]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="musicvolumeslider" type="HSlider" parent="UI/TabContainer/Audio" unique_id=1637339645]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 94.0
+offset_right = 292.0
+offset_bottom = 134.0
+value = 75.0
+rounded = true
+scrollable = false
+
+[node name="musicvolumelabel" type="Label" parent="UI/TabContainer/Audio" unique_id=1210525292]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 51.0
+offset_right = 651.0
+offset_bottom = 83.0
+text = "music volume (doesnt do anything)"
+
+[node name="musicvolumecounter" type="Label" parent="UI/TabContainer/Audio" unique_id=283387309]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 83.0
+offset_right = 107.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 24
+text = "100%"
+
+[connection signal="pressed" from="UI/backbutton" to="." method="_on_backbutton_pressed"]
+[connection signal="pressed" from="UI/debugdeletesavedata" to="UI/debugdeletesavedata" method="_on_pressed"]
+[connection signal="timeout" from="UI/debugdeletesavedata/Timer" to="UI/debugdeletesavedata" method="_on_timer_timeout"]

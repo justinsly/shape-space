@@ -7,10 +7,9 @@ extends Node
 @export var HiscoreLabel: Label
 @export var ScoreLabel: Label
 @export var HealthHud: Sprite2D
-var fadetween
 
 func _ready():
-	HiscoreLabel.text = "HI score: %s" % playervars.hiscore
+	HiscoreLabel.text = str(playervars.hiscore)
 	playervars.health = 3
 	playervars.score = 0
 	playervars.oldhiscore = playervars.hiscore
@@ -30,19 +29,23 @@ func _on_enemyspawner_timeout():
 		sceneenemy = spawnable_enemies.pick_random() # change this to rare_spawnable_enemies once we actually add enemies to that list
 	#print(sceneenemy)
 	var enemy = sceneenemy.instantiate()
-	enemy.initialize(randf_range(208.0, 872.0), -47)
+	enemy.initialize(randf_range(32.0, 658.0), -47)
 	add_child(enemy)
 
 func _on_player_hit():
 	HealthHud.frame = playervars.health
+	if playervars.health <= 1:
+		$HUD/Healthwarning/AnimationPlayer.play("healthwarningbeep")
 
 func _on_player_heal():
 	HealthHud.frame = playervars.health
+	if playervars.health > 1:
+		$HUD/Healthwarning/AnimationPlayer.play("RESET")
 
 
 func _on_scoremanager_update():
-	ScoreLabel.text = "score: %s" % playervars.score
-	HiscoreLabel.text = "HI score: %s" % playervars.hiscore
+	ScoreLabel.text = str(playervars.score)
+	HiscoreLabel.text = str(playervars.hiscore)
 	
 	# FIXME: this shit gets intense the moment you reach a score of 3
 	#$enemyspawner.wait_time = $enemyspawner.wait_time + (((playervars.score * 0.5) * -1) + 0.4)
@@ -51,31 +54,14 @@ func _on_scoremanager_update():
 
 
 func _on_player_explode():
-	var gameoverscreen = preload("res://scenes/screens/arcadegameover.tscn").instantiate()
 	await get_tree().create_timer(2).timeout
 	if playervars.hiscore > playervars.oldhiscore:
 		save_data()
 	
 	get_tree().paused = false
-	queue_free()
-	add_sibling(gameoverscreen)
-
-
-func _on_healthzone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		if fadetween:
-			fadetween.kill()
-		fadetween = create_tween()
-		fadetween.set_trans(Tween.TRANS_EXPO)
-		fadetween.set_ease(Tween.EASE_OUT)
-		fadetween.tween_property(HealthHud, "modulate", Color(1, 1, 1, 0.5), 0.5)
-
-
-func _on_healthzone_area_exited(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		if fadetween:
-			fadetween.kill()
-		fadetween = create_tween()
-		fadetween.set_trans(Tween.TRANS_EXPO)
-		fadetween.set_ease(Tween.EASE_OUT)
-		fadetween.tween_property(HealthHud, "modulate", Color(1, 1, 1, 1), 0.5)
+	print("going to game over screen...")
+	for evilbitch in get_tree().get_nodes_in_group("enemy"):
+		print_verbose("deleting ", evilbitch, " to prevent potential crashes!!!")
+		evilbitch.free()
+	$HUD/Healthwarning/AnimationPlayer.play("RESET")
+	loadinghandler.initiateloadingscreen("res://scenes/screens/arcadegameover.tscn", true)

@@ -2,15 +2,10 @@
 
 [ext_resource type="Script" uid="uid://clvoxhmr5d326" path="res://scenes/screens/titlescreen.gd" id="1_cjnew"]
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="2_goadl"]
-[ext_resource type="PackedScene" uid="uid://cu3b6mcoi0h7n" path="res://scenes/screens/main.tscn" id="2_owb6x"]
-[ext_resource type="Script" uid="uid://c0py1xgbklnim" path="res://debugdeletesavedata.gd" id="3_2bjoa"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pdex"]
-bg_color = Color(0.972549, 0, 0.1254902, 0.5137255)
+[ext_resource type="PackedScene" uid="uid://d2xmjt7gon5id" path="res://scenes/screenborder.tscn" id="4_owb6x"]
 
 [node name="titlescreen" type="Node" unique_id=152194447]
 script = ExtResource("1_cjnew")
-game = ExtResource("2_owb6x")
 
 [node name="UI" type="Control" parent="." unique_id=316907107]
 layout_mode = 3
@@ -28,16 +23,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -196.0
+offset_left = -384.0
+offset_top = -220.0
 offset_right = 188.0
-offset_bottom = -105.0
+offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
 text = "yet another
 space shooter"
-horizontal_alignment = 1
 
 [node name="hiscoretext" type="Label" parent="UI" unique_id=1318982844]
 layout_mode = 1
@@ -46,9 +40,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
+offset_left = -384.0
 offset_top = -76.0
-offset_right = 324.0
+offset_right = 260.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -57,6 +51,7 @@ text = "high score: 0"
 horizontal_alignment = 1
 
 [node name="starttext" type="Label" parent="UI" unique_id=938347108]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,36 +72,86 @@ horizontal_alignment = 1
 
 [node name="tutorialtext" type="Label" parent="UI" unique_id=1718179918]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 192.0
-offset_top = -112.0
-offset_right = 895.0
-offset_bottom = -21.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = 188.0
+offset_right = 319.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "shoot: SHIFT/SPACE/ENTER
-quit: ESC"
+text = "accept/shoot: SHIFT/SPACE/ENTER
+pause: ESC"
 vertical_alignment = 2
 
-[node name="debugdeletesavedata" type="Button" parent="." unique_id=594316635]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="startbutton" type="Button" parent="UI" unique_id=1084129802]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -4.0
+offset_right = -50.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_goadl")
+text = "START GAME"
+
+[node name="optionsbutton" type="Button" parent="UI" unique_id=1807042536]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = 52.0
+offset_right = 39.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_goadl")
+text = "OPTIONS (WIP)"
+
+[node name="quitbutton" type="Button" parent="UI" unique_id=900522856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = 104.0
+offset_right = -225.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+
+[node name="fadeout" type="ColorRect" parent="UI" unique_id=1132699211]
+visible = false
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -472.0
-offset_top = 8.0
-offset_right = -200.0
-offset_bottom = 64.0
-grow_horizontal = 0
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_8pdex")
-text = "evil save data deletion button"
-script = ExtResource("3_2bjoa")
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = 648.0
+offset_right = 264.0
+offset_bottom = 1976.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="debugdeletesavedata" unique_id=257768289]
-wait_time = 2.5
-one_shot = true
+[node name="screenborder" parent="." unique_id=305851217 instance=ExtResource("4_owb6x")]
+visible = false
 
-[connection signal="pressed" from="debugdeletesavedata" to="debugdeletesavedata" method="_on_pressed"]
-[connection signal="timeout" from="debugdeletesavedata/Timer" to="debugdeletesavedata" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/startbutton" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="UI/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="UI/quitbutton" to="." method="_on_quitbutton_pressed"]

@@ -18,6 +18,9 @@ func _on_initialized():
 	else:
 		dothespin(1)
 
+# this code is horrible, im surprised it even works,
+# sometimes the enemy would suddenly spin really slow, i have no idea why
+# i really should rewrite this at some point
 func dothespin(dir: int = 0):
 	var spinstopspot = spinstopper.instantiate()
 	spinstopspot.set_meta("collisionID", magicnumber)
@@ -40,7 +43,8 @@ func dothespin(dir: int = 0):
 			var movedir = Vector2.UP.rotated(rotation) * speed
 			rotation -= PI * delta
 			position += movedir * delta
-			await get_tree().create_timer(delta).timeout
+			if is_inside_tree():
+				await get_tree().create_timer(delta).timeout
 	else:
 		while spinning:
 			var delta = get_process_delta_time()
@@ -62,7 +66,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
 func activate_spinstopper(delay: float, thenode):
-	await get_tree().create_timer(delay).timeout
+	await get_tree().create_timer(delay, false).timeout
 	thenode.set_collision_layer_value(6, true)
 	thenode.monitorable = true
 	

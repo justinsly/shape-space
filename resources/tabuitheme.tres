@@ -1,8 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://dpxoi6db5uese"]
+[gd_resource type="Theme" format=3 uid="uid://c4tyxvuavkb1g"]
 
-[ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://resources/VCR_OSD_MONO_1.001.ttf" id="1_6t1q3"]
-[ext_resource type="Texture2D" uid="uid://bglsm37atwbq2" path="res://resources/textures/selectindicator.png" id="2_binif"]
-[ext_resource type="Texture2D" uid="uid://ft1sdbbxrrqm" path="res://resources/textures/sliderhandle.png" id="3_a370y"]
+[ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://resources/VCR_OSD_MONO_1.001.ttf" id="1_7uhs5"]
+[ext_resource type="Texture2D" uid="uid://bglsm37atwbq2" path="res://resources/textures/selectindicator.png" id="2_n6tna"]
+[ext_resource type="Texture2D" uid="uid://ft1sdbbxrrqm" path="res://resources/textures/sliderhandle.png" id="3_l83uv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5gy4"]
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
@@ -10,6 +10,8 @@ border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a370y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhg81"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a370y"]
 bg_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
@@ -26,7 +28,7 @@ border_width_bottom = 5
 border_color = Color(0.21, 0.21, 0.21, 1)
 
 [resource]
-default_font = ExtResource("1_6t1q3")
+default_font = ExtResource("1_7uhs5")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(0.4862745, 0.9490196, 0.4862745, 1)
 Button/colors/font_hover_color = Color(0.4862745, 0.9490196, 0.4862745, 1)
@@ -38,19 +40,20 @@ Button/colors/icon_hover_pressed_color = Color(0, 1, 0, 1)
 Button/colors/icon_pressed_color = Color(0, 1, 0, 1)
 Button/constants/align_to_largest_stylebox = 1
 Button/constants/h_separation = 10
-Button/font_sizes/font_size = 50
-Button/fonts/font = ExtResource("1_6t1q3")
-Button/icons/icon = ExtResource("2_binif")
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_7uhs5")
+Button/icons/icon = ExtResource("2_n6tna")
 Button/styles/focus = SubResource("StyleBoxFlat_v5gy4")
 Button/styles/hover = SubResource("StyleBoxFlat_v5gy4")
 Button/styles/normal = SubResource("StyleBoxEmpty_a370y")
-HSlider/icons/grabber = ExtResource("3_a370y")
-HSlider/icons/grabber_highlight = ExtResource("3_a370y")
+Button/styles/pressed = SubResource("StyleBoxEmpty_dhg81")
+HSlider/icons/grabber = ExtResource("3_l83uv")
+HSlider/icons/grabber_highlight = ExtResource("3_l83uv")
 HSlider/styles/slider = SubResource("StyleBoxFlat_a370y")
-Label/font_sizes/font_size = 50
-Label/fonts/font = ExtResource("1_6t1q3")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_7uhs5")
 TabContainer/constants/icon_separation = 10
 TabContainer/constants/outline_size = 29
 TabContainer/font_sizes/font_size = 42
-TabContainer/fonts/font = ExtResource("1_6t1q3")
+TabContainer/fonts/font = ExtResource("1_7uhs5")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_dmy22")
