@@ -19,6 +19,16 @@ border_width_top = 5
 border_width_bottom = 5
 border_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsnb3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydnem"]
+bg_color = Color(0.13, 0.13, 0.13, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.09, 0.09, 0.09, 1)
+corner_detail = 1
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmy22"]
 bg_color = Color(0.16, 0.16, 0.16, 0)
 border_width_left = 5
@@ -35,7 +45,7 @@ Button/colors/font_hover_color = Color(0.4862745, 0.9490196, 0.4862745, 1)
 Button/colors/font_hover_pressed_color = Color(0, 1, 0, 1)
 Button/colors/font_pressed_color = Color(0, 1, 0, 1)
 Button/colors/icon_focus_color = Color(0.4862745, 0.9490196, 0.4862745, 1)
-Button/colors/icon_hover_color = Color(0.66999996, 1, 0.66999996, 1)
+Button/colors/icon_hover_color = Color(0.67058825, 1, 0.67058825, 1)
 Button/colors/icon_hover_pressed_color = Color(0, 1, 0, 1)
 Button/colors/icon_pressed_color = Color(0, 1, 0, 1)
 Button/constants/align_to_largest_stylebox = 1
@@ -52,6 +62,11 @@ HSlider/icons/grabber_highlight = ExtResource("3_l83uv")
 HSlider/styles/slider = SubResource("StyleBoxFlat_a370y")
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_7uhs5")
+PopupMenu/colors/font_color = Color(0, 1, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0.67058825, 1, 0.67058825, 1)
+PopupMenu/font_sizes/font_size = 23
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_xsnb3")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_ydnem")
 TabContainer/constants/icon_separation = 10
 TabContainer/constants/outline_size = 29
 TabContainer/font_sizes/font_size = 42

@@ -15,14 +15,6 @@ func _ready():
 	playervars.oldhiscore = playervars.hiscore
 	print("main scene ready!")
 
-func save_data():
-	var save_file = FileAccess.open("user://scoredata.jden", FileAccess.WRITE)
-	var s_data = playervars.call("save_score")
-	var json_string = JSON.stringify(s_data)
-	
-	save_file.store_line(json_string)
-	print("data saved")
-
 func _on_enemyspawner_timeout():
 	var sceneenemy = spawnable_enemies.pick_random()
 	if randi_range(1, 10) == 10:
@@ -56,7 +48,7 @@ func _on_scoremanager_update():
 func _on_player_explode():
 	await get_tree().create_timer(2).timeout
 	if playervars.hiscore > playervars.oldhiscore:
-		save_data()
+		playervars.save_data()
 	
 	get_tree().paused = false
 	print("going to game over screen...")

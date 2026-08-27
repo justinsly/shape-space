@@ -4,20 +4,79 @@
 [ext_resource type="PackedScene" uid="uid://0jhpw3jidl3x" path="res://scenes/entities/enemies/enemySpinner/spinstopspot.tscn" id="2_epdbv"]
 [ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_pijsf"]
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_y1qkv"]
+[ext_resource type="PackedScene" uid="uid://dgvrul46o8g8e" path="res://scenes/entities/projectiles/enemybullet/enemybullet.tscn" id="3_epdbv"]
 [ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_pijsf"]
 
+[sub_resource type="Animation" id="Animation_epdbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l6c0a"]
+resource_name = "spin_toleft"
+length = 2.1333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.1333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.5707963267948966, 3.141592653589793, 6.283185307179586, 9.42477796076938]
+}
+
+[sub_resource type="Animation" id="Animation_5waje"]
+resource_name = "spin_toright"
+length = 2.1333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.1333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.5707964, -3.1415927, -6.2831855, -9.424778]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6c0a"]
+_data = {
+&"RESET": SubResource("Animation_epdbv"),
+&"spin_toleft": SubResource("Animation_l6c0a"),
+&"spin_toright": SubResource("Animation_5waje")
+}
+
 [node name="Enemy_spinner" type="Area2D" unique_id=1415852988 groups=["enemy"]]
+rotation = -1.5707964
 scale = Vector2(0.8, 0.8)
 collision_layer = 4
 collision_mask = 34
 script = ExtResource("1_y1qkv")
 spinstopper = ExtResource("2_epdbv")
+scenebullet = ExtResource("3_epdbv")
 max_health = 2
 speed = 500
 score = 3
 sceneboom = ExtResource("2_pijsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=964575153]
+position = Vector2(4.768371e-06, -1.1920927e-05)
+scale = Vector2(0.99999976, 0.99999976)
 shape = ExtResource("3_pijsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=317218262]
@@ -26,7 +85,16 @@ texture = ExtResource("2_y1qkv")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1516917473]
 rect = Rect2(-192, -192, 384, 392)
 
+[node name="bullettimer" type="Timer" parent="." unique_id=1065968656]
+wait_time = 0.19
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1049147731]
+active = false
+libraries/ = SubResource("AnimationLibrary_l6c0a")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
 [connection signal="initialized" from="." to="." method="_on_initialized"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="bullettimer" to="." method="_on_bullettimer_timeout"]

@@ -12,7 +12,9 @@ signal flickerframe
 @export var scenebullet: PackedScene
 ## the explosion effect scene
 @export var sceneboom: PackedScene
-var speed = 550
+@export var speed := 550
+## the player speed when the focus/slow button is held
+@export var focusedspeed := 200
 # used for delays between shots
 var canfire := true
 # for invuln periods when player gets hit
@@ -21,7 +23,7 @@ var iframes := false
 var alive := true
 # downward acceleration velocity for the death animation
 var fall_accel = 400
-
+var focused := false
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -43,12 +45,19 @@ func _physics_process(delta):
 				bullet.position.y -= 30
 				get_parent().add_child(bullet)
 				$FireTimer.start()
-		
+		if Input.is_action_pressed("focus"):
+			focused = true
+		else:
+			focused = false
 		
 		if direction != Vector2.ZERO:
 			# prevents the player from being faster by moving diagonally
 			direction = direction.normalized()
-		velocity = direction * speed
+		match focused:
+			true:
+				velocity = direction * focusedspeed
+			_:
+				velocity = direction * speed
 	else:
 		$Sprite2D.rotate(PI * delta)
 		velocity.y += fall_accel * delta

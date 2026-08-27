@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c5f1woqna2qsw"]
+
+[ext_resource type="Script" uid="uid://dsxxn06pahhve" path="res://scenes/entities/enemies/enemySpinner/featherbullet/bcfeatherbullet.gd" id="1_qb565"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
+radius = 12.0
+
+[node name="Bcfeatherbullet" type="Area2D" unique_id=1389393643 groups=["bullet", "enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_qb565")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=325170423]
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasGroup" unique_id=1006622673]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 24, 12, 20, 20, 12, 24, 0, 20, -12, 12, -20, 0, -24, -12, -20, -20, -12, -24, 0, -20, 12, -12, 20)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasGroup" unique_id=1651872202]
+scale = Vector2(0.8, 0.8)
+polygon = PackedVector2Array(0, 24, 12, 20, 20, 12, 24, 0, 20, -12, 12, -20, 0, -24, -12, -20, -20, -12, -24, 0, -20, 12, -12, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1999930776]
+shape = SubResource("CircleShape2D_1vivr")
+debug_color = Color(0.43627262, 0.45608056, 1, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=837525955]
+rect = Rect2(-64, -64, 128, 128)

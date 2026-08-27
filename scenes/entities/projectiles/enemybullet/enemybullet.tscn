@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dgvrul46o8g8e"]
+
+[ext_resource type="Script" uid="uid://coriut8r75mqa" path="res://scenes/entities/projectiles/enemybullet/enemybullet.gd" id="1_jxnfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(6, 6)
+
+[node name="Enemybullet" type="Area2D" unique_id=404665330 groups=["bullet", "enemy"]]
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jxnfd")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1607008752]
+position = Vector2(0, 4)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(5, -6, 3, 0, 0, 3, -3, 0, -5, -6, 0, -9)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=714081632]
+position = Vector2(0, 4)
+color = Color(1, 0.93921936, 0.9287709, 1)
+polygon = PackedVector2Array(0, 2, 3, -6, 0, -8, -3, -6)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1266098179]
+rect = Rect2(-20, -18, 39, 36)
+show_rect = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160595345]
+shape = SubResource("RectangleShape2D_1vivr")
+debug_color = Color(0.14145714, 0.51999503, 0.99999994, 0.41960785)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

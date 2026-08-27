@@ -17,10 +17,10 @@
 size = Vector2(1274, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(291, 728)
+size = Vector2(317, 728)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftx24"]
-size = Vector2(494, 728)
+size = Vector2(504, 728)
 
 [sub_resource type="Animation" id="Animation_n2jqv"]
 length = 0.001
@@ -84,11 +84,11 @@ position = Vector2(563, 712)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border" unique_id=678151430]
-position = Vector2(12.5, 324)
+position = Vector2(25.5, 324)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1801164904]
-position = Vector2(1053, 315)
+position = Vector2(1048, 315)
 shape = SubResource("RectangleShape2D_ftx24")
 
 [node name="enemyspawner" type="Timer" parent="." unique_id=56657017]
@@ -109,30 +109,30 @@ grow_vertical = 2
 theme = ExtResource("4_lquwl")
 
 [node name="HudContainer" type="Sprite2D" parent="HUD" unique_id=507978102]
-position = Vector2(848, 324.00003)
+position = Vector2(844, 324)
 scale = Vector2(3, 3)
 texture = ExtResource("7_sa82p")
 
 [node name="ScoreLabel" type="Label" parent="HUD" unique_id=399315769]
 layout_mode = 1
 offset_left = 658.0
-offset_top = 28.0
+offset_top = 42.0
 offset_right = 1043.0
-offset_bottom = 77.0
+offset_bottom = 91.0
 theme_override_colors/font_color = Color(0.5, 1, 0.5, 1)
 text = "0"
 
 [node name="HiscoreLabel" type="Label" parent="HUD" unique_id=1015457330]
 layout_mode = 1
 offset_left = 658.0
-offset_top = 126.0
+offset_top = 140.0
 offset_right = 1050.0
-offset_bottom = 170.0
+offset_bottom = 184.0
 theme_override_colors/font_color = Color(0.5019608, 1, 0.5019608, 1)
 text = "0"
 
 [node name="HealthHud" type="Sprite2D" parent="HUD" unique_id=1018957908]
-position = Vector2(764, 324)
+position = Vector2(766, 323.99997)
 rotation = 1.5707964
 scale = Vector2(3, 3)
 texture = ExtResource("7_htic3")
@@ -141,7 +141,7 @@ hframes = 7
 frame = 3
 
 [node name="Healthwarning" type="Sprite2D" parent="HUD" unique_id=1996473002]
-position = Vector2(788, 333)
+position = Vector2(790, 332.99997)
 scale = Vector2(3, 3)
 texture = ExtResource("9_n2jqv")
 hframes = 2
@@ -150,7 +150,7 @@ hframes = 2
 libraries/ = SubResource("AnimationLibrary_x5y6l")
 
 [node name="Leftedge" type="Sprite2D" parent="HUD" unique_id=333069033]
-position = Vector2(-31, 324)
+position = Vector2(-32, 324)
 scale = Vector2(3, 3)
 texture = ExtResource("10_woqya")
 
