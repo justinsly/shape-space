@@ -1,38 +1,41 @@
 [gd_scene format=3 uid="uid://c6a4w3r0mm27i"]
 
 [ext_resource type="Script" uid="uid://dotw44tu2i7ii" path="res://scenes/entities/enemies/bcenemy/enemy_bc.gd" id="1_hvc03"]
+[ext_resource type="PackedScene" uid="uid://c5f1woqna2qsw" path="res://scenes/entities/enemies/bcenemy/featherbullet/bcfeatherbullet.tscn" id="2_g7gmn"]
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_k752i"]
 [ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_k752i"]
+[ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="3_l6yig"]
+[ext_resource type="PackedScene" uid="uid://5gspo75v0t7a" path="res://scenes/items/heal/itemheal.tscn" id="4_4syy5"]
 
 [sub_resource type="Animation" id="Animation_k752i"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_g7gmn"]
 resource_name = "descend"
-length = 2.3000000000000003
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(0.5176331, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.30778614, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 24)]
+"values": [0.0, 100.0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -41,7 +44,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.3),
+"times": PackedFloat32Array(1.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -55,9 +58,17 @@ _data = {
 &"descend": SubResource("Animation_g7gmn")
 }
 
-[node name="Bcenemy" type="Area2D" unique_id=1070467066]
+[node name="Bcenemy" type="Area2D" unique_id=1070467066 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_hvc03")
+scenebullet = ExtResource("2_g7gmn")
+max_health = 3
+score = 3
+sceneboom = ExtResource("3_l6yig")
+sceneheal = ExtResource("4_4syy5")
 metadata/_custom_type_script = "uid://bqgnae0j5ughc"
+metadata/_edit_vertical_guides_ = [-664.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=298651835]
 position = Vector2(5.9604645e-08, -2.9802322e-07)
@@ -72,4 +83,8 @@ rect = Rect2(-192, -192, 384, 392)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1963588108]
 libraries/ = SubResource("AnimationLibrary_l6yig")
 
-[connection signal="initialized" from="." to="." method="_on_initialized"]
+[node name="Timer" type="Timer" parent="." unique_id=1693012359]
+wait_time = 0.1
+
+[connection signal="die" from="." to="." method="_on_die"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

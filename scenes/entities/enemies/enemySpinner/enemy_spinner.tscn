@@ -94,7 +94,7 @@ active = false
 libraries/ = SubResource("AnimationLibrary_l6c0a")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="damage_taken" from="." to="." method="_on_damage_taken"]
+[connection signal="die" from="." to="." method="_on_die"]
 [connection signal="initialized" from="." to="." method="_on_initialized"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="bullettimer" to="." method="_on_bullettimer_timeout"]

@@ -8,6 +8,7 @@ class_name Enemy
 signal damage_taken(dmg_amount: int, oldhealth: int) ## emitted by [method Enemy.take_damage]. [param dmg_amount] is the amount of damage that was dealt, [param oldhealth] is the health before the damage was dealt
 signal knockback_taken ## emitted by [method Enemy.take_knockback]
 signal initialized ## emitted by [method Enemy.initialize] by default unless if it was called with [param emit_init_signal] set to [param false]
+signal die ## emitted when the enemy takes damage and its health is 0
 
 @export var max_health: int = 1 ## the starting health for the enemy
 @export var speed: int = 250 ## do i need to write a description for this
@@ -22,10 +23,11 @@ signal initialized ## emitted by [method Enemy.initialize] by default unless if 
 @export_group("Preloaded Scenes")
 @export var sceneboom: PackedScene ## explosion effect scene
 @export var sceneheal: PackedScene ## the healing item scene to be dropped
-var health := 1
+@onready var health := max_health
 
 func _ready():
-	health = max_health
+	#health = max_health
+	pass
 
 ## normally should be run by whatever is handling the spawning of the enemies, repositions the enemy to the given [param startposx] and [param startposy] coordinates
 func initialize(startposx: float, startposy: float, emit_init_signal: bool = true):
@@ -43,6 +45,8 @@ func take_damage(dmg: int = 1, override_damage_flash = flash_on_damage, override
 	if override_damage_bounce:
 		take_knockback()
 	damage_taken.emit(dmg, oldhealth)
+	if health <= 0:
+		die.emit()
 	if override_damage_flash:
 		flash()
 

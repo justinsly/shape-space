@@ -20,9 +20,6 @@ func _on_initialized():
 	else:
 		dothespin(1)
 
-# this code is horrible, im surprised it even works,
-# sometimes the enemy would suddenly spin really slow, i have no idea why
-# i really should rewrite this at some point
 func dothespin(dir: int = 0):
 	var spinstopspot = spinstopper.instantiate()
 	spinstopspot.set_meta("collisionID", magicnumber)
@@ -35,30 +32,6 @@ func dothespin(dir: int = 0):
 		rotation += 0.8
 	spinning = true
 	spindir = dir
-	#if dir <= 0:
-		#while spinning:
-			#var delta = get_process_delta_time()
-			#if is_inside_tree():
-				#if get_tree().is_paused():
-					#await get_tree().create_timer(delta).timeout
-					#continue
-			#var movedir = Vector2.UP.rotated(rotation) * speed
-			#rotation -= PI * delta
-			#position += movedir * delta
-			#if is_inside_tree():
-				#await get_tree().create_timer(delta).timeout
-	#else:
-		#while spinning:
-			#var delta = get_process_delta_time()
-			#if is_inside_tree():
-				#if get_tree().is_paused():
-					#await get_tree().create_timer(delta).timeout
-					#continue
-			#var movedir = Vector2.UP.rotated(rotation) * speed
-			#rotation += PI * delta
-			#position += movedir * delta
-			#if is_inside_tree():
-				#await get_tree().create_timer(delta).timeout
 
 func _process(delta: float):
 	if spinning:
@@ -89,10 +62,8 @@ func _on_area_entered(area: Area2D):
 		rotation_degrees = 180.0
 		$bullettimer.stop()
 
-func _on_damage_taken(_dmg_amount, _oldhealth):
-	if health <= 0:
-		explode(false)
-
+func _on_die() -> void:
+	explode(false)
 
 func _on_bullettimer_timeout() -> void:
 	var bullet = scenebullet.instantiate()

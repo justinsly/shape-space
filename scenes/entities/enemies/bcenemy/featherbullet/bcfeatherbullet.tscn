@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c5f1woqna2qsw"]
 
-[ext_resource type="Script" uid="uid://dsxxn06pahhve" path="res://scenes/entities/enemies/enemySpinner/featherbullet/bcfeatherbullet.gd" id="1_qb565"]
+[ext_resource type="Script" uid="uid://dsxxn06pahhve" path="res://scenes/entities/enemies/bcenemy/featherbullet/bcfeatherbullet.gd" id="1_qb565"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
-radius = 12.0
+radius = 16.0
 
 [node name="Bcfeatherbullet" type="Area2D" unique_id=1389393643 groups=["bullet", "enemy"]]
 collision_layer = 4

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dgg2u4iaogox"]
+
+[ext_resource type="Script" uid="uid://mryg6d5xhjvq" path="res://scenes/test/featherbullettest.gd" id="1_tiq2w"]
+
+[node name="Node2D" type="Node2D" unique_id=1455563229]
+script = ExtResource("1_tiq2w")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1334687100]
+position = Vector2(576, 344)
+
+[node name="Timer" type="Timer" parent="." unique_id=466375972]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
