@@ -25,10 +25,6 @@ signal die ## emitted when the enemy takes damage and its health is 0
 @export var sceneheal: PackedScene ## the healing item scene to be dropped
 @onready var health := max_health
 
-func _ready():
-	#health = max_health
-	pass
-
 ## normally should be run by whatever is handling the spawning of the enemies, repositions the enemy to the given [param startposx] and [param startposy] coordinates
 func initialize(startposx: float, startposy: float, emit_init_signal: bool = true):
 	position.x = startposx
