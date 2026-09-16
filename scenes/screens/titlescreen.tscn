@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://clvoxhmr5d326" path="res://scenes/screens/titlescreen.gd" id="1_cjnew"]
 [ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="2_goadl"]
+[ext_resource type="Texture2D" uid="uid://bglsm37atwbq2" path="res://resources/textures/selectindicator.png" id="3_owb6x"]
 [ext_resource type="PackedScene" uid="uid://d2xmjt7gon5id" path="res://scenes/screenborder.tscn" id="4_owb6x"]
+[ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://resources/VCR_OSD_MONO_1.001.ttf" id="5_gere7"]
 
 [node name="titlescreen" type="Node" unique_id=152194447]
 script = ExtResource("1_cjnew")
@@ -24,9 +26,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -384.0
-offset_top = -220.0
+offset_top = -268.0
 offset_right = 188.0
-offset_bottom = -85.0
+offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
@@ -41,9 +43,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -384.0
-offset_top = -76.0
+offset_top = -124.0
 offset_right = 260.0
-offset_bottom = -32.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -97,11 +99,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -384.0
-offset_top = -4.0
+offset_top = -60.0
 offset_right = -50.0
-offset_bottom = 48.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../quitbutton")
 theme = ExtResource("2_goadl")
 text = "START GAME"
 
@@ -113,13 +116,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -384.0
-offset_top = 52.0
+offset_top = -4.0
 offset_right = 39.0
-offset_bottom = 104.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_goadl")
-text = "OPTIONS (WIP)"
+text = "OPTIONS"
+alignment = 0
+
+[node name="statsbutton" type="Button" parent="UI" unique_id=208148899]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = 52.0
+offset_right = -49.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "STATISTICS"
+icon = ExtResource("3_owb6x")
 
 [node name="quitbutton" type="Button" parent="UI" unique_id=900522856]
 layout_mode = 1
@@ -134,6 +154,7 @@ offset_right = -225.0
 offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_bottom = NodePath("../startbutton")
 text = "QUIT"
 
 [node name="fadeout" type="ColorRect" parent="UI" unique_id=1132699211]
@@ -153,6 +174,36 @@ color = Color(0, 0, 0, 1)
 [node name="screenborder" parent="." unique_id=305851217 instance=ExtResource("4_owb6x")]
 visible = false
 
+[node name="Popup" type="Popup" parent="." unique_id=1282138442]
+disable_3d = true
+oversampling_override = 1.0
+title = "statistics!!!"
+initial_position = 2
+size = Vector2i(627, 371)
+sharp_corners = true
+
+[node name="Label" type="Label" parent="Popup" unique_id=152416399]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 530.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("5_gere7")
+theme_override_font_sizes/font_size = 34
+text = "enemies defeated: 000
+shots fired: 000
+times you died: 000"
+
+[node name="closebutton" type="Button" parent="Popup" unique_id=1911684038]
+offset_left = 146.0
+offset_top = 286.0
+offset_right = 398.0
+offset_bottom = 338.0
+theme = ExtResource("2_goadl")
+text = "close"
+icon = ExtResource("3_owb6x")
+
 [connection signal="pressed" from="UI/startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="UI/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="UI/statsbutton" to="." method="_on_statsbutton_pressed"]
 [connection signal="pressed" from="UI/quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="Popup/closebutton" to="." method="_on_closebutton_pressed"]

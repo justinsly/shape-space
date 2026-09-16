@@ -1,0 +1,24 @@
+{
+	"disabled_build_options": {
+		"disable_3d": true,
+		"disable_navigation_3d": true,
+		"disable_physics_3d": true,
+		"disable_xr": true,
+		"forward_mobile_renderer": false,
+		"forward_plus_renderer": false,
+		"metal": false,
+		"module_godot_physics_3d_enabled": false,
+		"module_jolt_physics_enabled": false
+	},
+	"disabled_classes": [
+		"CollisionObject3D",
+		"CollisionPolygon3D",
+		"CollisionShape3D",
+		"GridMap",
+		"Joint3D",
+		"NavigationAgent3D",
+		"Node3D",
+		"XRCamera3D"
+	],
+	"type": "build_profile"
+}

@@ -12,9 +12,9 @@ signal flickerframe
 @export var scenebullet: PackedScene
 ## the explosion effect scene
 @export var sceneboom: PackedScene
-@export var speed := 550
+@export var speed := 450
 ## the player speed when the focus/slow button is held
-@export var focusedspeed := 200
+@export var focusedspeed := 290
 # used for delays between shots
 var canfire := true
 # for invuln periods when player gets hit
@@ -43,7 +43,7 @@ func _physics_process(delta):
 				var bullet = scenebullet.instantiate()
 				bullet.position = position
 				bullet.position.y -= 30
-				get_parent().add_child(bullet)
+				add_sibling(bullet)
 				$FireTimer.start()
 		if Input.is_action_pressed("focus"):
 			focused = true

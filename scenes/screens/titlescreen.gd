@@ -7,6 +7,9 @@ func _ready():
 	$UI/startbutton.grab_focus()
 
 func _on_startbutton_pressed():
+	for i in $UI.get_children():
+		if i.is_class("Button"):
+			i.disabled = true
 	fadeout.show()
 	while fadeout.position.y > 0:
 		var delta = get_process_delta_time()
@@ -20,3 +23,12 @@ func _on_optionsbutton_pressed():
 
 func _on_quitbutton_pressed():
 	get_tree().quit()
+
+
+func _on_statsbutton_pressed() -> void:
+	$Popup.popup()
+	$Popup/closebutton.grab_focus()
+
+
+func _on_closebutton_pressed() -> void:
+	$Popup.hide()
