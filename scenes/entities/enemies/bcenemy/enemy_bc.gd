@@ -28,6 +28,7 @@ func _on_timer_timeout() -> void:
 	bullet.shoot(randf_range(-50, 50), randf_range(-19, -20))
 	if shotbullets >= 26:
 		shoottimer.stop()
+		await get_tree().create_timer(0.5).timeout
 		ascend()
 
 func _on_die() -> void:

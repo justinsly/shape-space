@@ -21,7 +21,7 @@ func _on_enemyspawner_timeout():
 		sceneenemy = spawnable_enemies.pick_random() # change this to rare_spawnable_enemies once we actually add enemies to that list
 	#print(sceneenemy)
 	var enemy = sceneenemy.instantiate()
-	enemy.initialize(randf_range(32.0, 658.0), -47)
+	enemy.initialize(randf_range(44.0, 645.0), -47)
 	add_child(enemy)
 
 func _on_player_hit():
