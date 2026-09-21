@@ -34,16 +34,16 @@ offset_left = 192.0
 offset_top = 128.0
 offset_right = 960.0
 offset_bottom = 512.0
-focus_neighbor_bottom = NodePath("Game/debugdeletesavedata")
+focus_neighbor_bottom = NodePath("Dangerzone/debugdeletesavedata")
 theme = ExtResource("4_xsnb3")
-current_tab = 2
+current_tab = 0
 switch_on_drag_hover = false
 tabs_rearrange_group = 0
 tab_0/icon = ExtResource("5_ydnem")
 tab_1/icon = ExtResource("5_cnf7s")
+tab_3/title = "Danger zone"
 
 [node name="Audio" type="Control" parent="UI/TabContainer" unique_id=1129068074]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -129,11 +129,27 @@ offset_right = 242.0
 offset_bottom = 59.0
 text = "window mode"
 
-[node name="Game" type="Control" parent="UI/TabContainer" unique_id=476579095]
+[node name="Game" type="Control" parent="UI/TabContainer" unique_id=1857858308]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="debugdeletesavedata" type="Button" parent="UI/TabContainer/Game" unique_id=1484718250]
+[node name="hitboxfocustoggle" type="CheckButton" parent="UI/TabContainer/Game" unique_id=550914183]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 83.0
+offset_right = 562.0
+offset_bottom = 128.0
+button_pressed = true
+text = "show hitbox when focusing"
+
+[node name="Dangerzone" type="Control" parent="UI/TabContainer" unique_id=476579095]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = "Danger zone"
+
+[node name="debugdeletesavedata" type="Button" parent="UI/TabContainer/Dangerzone" unique_id=1484718250]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -160,11 +176,11 @@ theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 1)
 text = "delete data"
 script = ExtResource("2_3nq1c")
 
-[node name="Timer" type="Timer" parent="UI/TabContainer/Game/debugdeletesavedata" unique_id=1552459262]
+[node name="Timer" type="Timer" parent="UI/TabContainer/Dangerzone/debugdeletesavedata" unique_id=1552459262]
 wait_time = 2.5
 one_shot = true
 
-[node name="deletesettingsbutton" type="Button" parent="UI/TabContainer/Game" unique_id=1693535392]
+[node name="deletesettingsbutton" type="Button" parent="UI/TabContainer/Dangerzone" unique_id=1693535392]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 134.0
@@ -184,7 +200,7 @@ theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 1)
 text = "reset settings"
 script = ExtResource("7_cnf7s")
 
-[node name="Timer" type="Timer" parent="UI/TabContainer/Game/deletesettingsbutton" unique_id=284881695]
+[node name="Timer" type="Timer" parent="UI/TabContainer/Dangerzone/deletesettingsbutton" unique_id=284881695]
 wait_time = 2.5
 one_shot = true
 
@@ -199,8 +215,8 @@ text = "apply"
 [connection signal="pressed" from="UI/backbutton" to="." method="_on_backbutton_pressed"]
 [connection signal="value_changed" from="UI/TabContainer/Audio/musicvolumeslider" to="." method="_on_musicvolumeslider_value_changed"]
 [connection signal="value_changed" from="UI/TabContainer/Audio/sfxvolumeslider" to="." method="_on_sfxvolumeslider_value_changed"]
-[connection signal="pressed" from="UI/TabContainer/Game/debugdeletesavedata" to="UI/TabContainer/Game/debugdeletesavedata" method="_on_pressed"]
-[connection signal="timeout" from="UI/TabContainer/Game/debugdeletesavedata/Timer" to="UI/TabContainer/Game/debugdeletesavedata" method="_on_timer_timeout"]
-[connection signal="pressed" from="UI/TabContainer/Game/deletesettingsbutton" to="UI/TabContainer/Game/deletesettingsbutton" method="_on_pressed"]
-[connection signal="timeout" from="UI/TabContainer/Game/deletesettingsbutton/Timer" to="UI/TabContainer/Game/deletesettingsbutton" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/TabContainer/Dangerzone/debugdeletesavedata" to="UI/TabContainer/Dangerzone/debugdeletesavedata" method="_on_pressed"]
+[connection signal="timeout" from="UI/TabContainer/Dangerzone/debugdeletesavedata/Timer" to="UI/TabContainer/Dangerzone/debugdeletesavedata" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/TabContainer/Dangerzone/deletesettingsbutton" to="UI/TabContainer/Dangerzone/deletesettingsbutton" method="_on_pressed"]
+[connection signal="timeout" from="UI/TabContainer/Dangerzone/deletesettingsbutton/Timer" to="UI/TabContainer/Dangerzone/deletesettingsbutton" method="_on_timer_timeout"]
 [connection signal="pressed" from="UI/applybutton" to="." method="_on_applybutton_pressed"]

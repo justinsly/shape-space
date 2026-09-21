@@ -24,6 +24,12 @@ var alive := true
 # downward acceleration velocity for the death animation
 var fall_accel = 400
 var focused := false
+var tween
+@onready var hitboxvisualizer: Polygon2D = $hitboxvisualizer
+
+func _ready() -> void:
+	if !playervars.showfocushitbox:
+		hitboxvisualizer.hide()
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -49,7 +55,10 @@ func _physics_process(delta):
 			focused = true
 		else:
 			focused = false
-		
+		if Input.is_action_just_pressed("focus"):
+			hitboxfade(true)
+		if Input.is_action_just_released("focus"):
+			hitboxfade(false)
 		if direction != Vector2.ZERO:
 			# prevents the player from being faster by moving diagonally
 			direction = direction.normalized()
@@ -58,6 +67,7 @@ func _physics_process(delta):
 				velocity = direction * focusedspeed
 			_:
 				velocity = direction * speed
+		hitboxvisualizer.rotate(0.05)
 	else:
 		$Sprite2D.rotate(PI * delta)
 		velocity.y += fall_accel * delta
@@ -65,6 +75,23 @@ func _physics_process(delta):
 
 func _on_fire_timer_timeout():
 	canfire = true
+
+# its a bit weird and buggy,
+# sometimes the fade-in would not play for whatever reason
+func hitboxfade(fadein: bool = false):
+	match fadein:
+		true:
+			if tween:
+				tween.kill()
+				print("debugtweenin")
+			tween = create_tween()
+			tween.tween_property(hitboxvisualizer, "modulate:a", 1.0, 0.3)
+		_:
+			if tween:
+				tween.kill()
+				print("debugtweenout")
+			tween = create_tween()
+			tween.tween_property(hitboxvisualizer, "modulate:a", 0.0, 0.3)
 
 #FIXME: if the player is inside an enemy when the iframes runs out, they wont be considered as "hit"
 func _on_hitbox_area_entered(area):
@@ -79,6 +106,7 @@ func _on_hitbox_area_entered(area):
 				dieded.emit()
 				$CollisionShape2D.set_deferred("disabled", true)
 				$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+				hitboxvisualizer.hide()
 				alive = false
 				velocity.x = 0
 				velocity.y = -350

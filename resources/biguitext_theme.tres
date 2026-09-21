@@ -3,6 +3,8 @@
 [ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://resources/VCR_OSD_MONO_1.001.ttf" id="1_6t1q3"]
 [ext_resource type="Texture2D" uid="uid://bglsm37atwbq2" path="res://resources/textures/selectindicator.png" id="2_binif"]
 [ext_resource type="Texture2D" uid="uid://ft1sdbbxrrqm" path="res://resources/textures/sliderhandle.png" id="3_a370y"]
+[ext_resource type="Texture2D" uid="uid://1guhaloonl6h" path="res://resources/textures/ui/toggleon.png" id="3_arrin"]
+[ext_resource type="Texture2D" uid="uid://g4opav1ps8ik" path="res://resources/textures/ui/toggleoff.png" id="4_7221x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5gy4"]
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
@@ -44,6 +46,8 @@ Button/icons/icon = ExtResource("2_binif")
 Button/styles/focus = SubResource("StyleBoxFlat_v5gy4")
 Button/styles/hover = SubResource("StyleBoxFlat_v5gy4")
 Button/styles/normal = SubResource("StyleBoxEmpty_a370y")
+CheckButton/icons/checked = ExtResource("3_arrin")
+CheckButton/icons/unchecked = ExtResource("4_7221x")
 HSlider/icons/grabber = ExtResource("3_a370y")
 HSlider/icons/grabber_highlight = ExtResource("3_a370y")
 HSlider/styles/slider = SubResource("StyleBoxFlat_a370y")

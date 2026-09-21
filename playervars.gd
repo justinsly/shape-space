@@ -12,6 +12,7 @@ var mastervolume := 100
 var musicvolume := 50
 var sfxvolume := 50
 var windowmode := 0
+var showfocushitbox := true
 
 func return_savedict():
 	# i should probably make the save data a binary file
@@ -29,6 +30,7 @@ func savesettings():
 	config.set_value("audio", "musicvol", musicvolume)
 	config.set_value("audio", "sfxvol", sfxvolume)
 	config.set_value("video", "windowmode", windowmode)
+	config.set_value("game", "focushitbox", showfocushitbox)
 	config.save(SETTINGSFILE)
 	print("settings saved")
 
@@ -47,6 +49,8 @@ func loadsettings():
 				sfxvolume = config.get_value(section, "sfxvol", 50)
 			"video":
 				windowmode = config.get_value(section, "windowmode", 0)
+			"game":
+				showfocushitbox = config.get_value(section, "focushitbox", true)
 	print("settings loaded")
 
 func save_data():

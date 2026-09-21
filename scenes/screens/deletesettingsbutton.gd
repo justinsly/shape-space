@@ -12,6 +12,7 @@ func _on_pressed():
 			playervars.sfxvolume = 50
 			playervars.windowmode = 0
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			playervars.showfocushitbox = true
 			print("settings resetted")
 		$Timer.stop()
 		$Timer.timeout.emit()
