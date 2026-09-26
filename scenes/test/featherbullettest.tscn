@@ -6,10 +6,54 @@
 script = ExtResource("1_tiq2w")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1334687100]
-position = Vector2(576, 344)
+position = Vector2(584, 156)
 
 [node name="Timer" type="Timer" parent="." unique_id=466375972]
 wait_time = 0.2
 autostart = true
 
+[node name="Button" type="Button" parent="." unique_id=1025283727]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 296.0
+offset_top = 32.0
+offset_right = 388.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "max fps 45"
+
+[node name="Button2" type="Button" parent="." unique_id=2081649021]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 420.0
+offset_top = 32.0
+offset_right = 512.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "max fps 60"
+
+[node name="Label" type="Label" parent="." unique_id=1830272939]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button3" type="Button" parent="." unique_id=1883175548]
+visible = false
+offset_left = 152.0
+offset_top = 32.0
+offset_right = 244.0
+offset_bottom = 63.0
+text = "max fps 30"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

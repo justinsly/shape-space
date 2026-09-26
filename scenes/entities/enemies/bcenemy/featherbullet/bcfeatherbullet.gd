@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if curspeed.y > maxfallspeed:
 		curspeed.y = maxfallspeed
 	if curspeed.x > 0:
-		curspeed.x -= 0.5
+		curspeed.x -= 40 * delta
 	elif curspeed.x < 0:
-		curspeed.x += 0.5
+		curspeed.x += 40 * delta
 	position += curspeed * 0.5

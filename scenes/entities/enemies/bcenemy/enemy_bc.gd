@@ -25,7 +25,7 @@ func _on_timer_timeout() -> void:
 	var bullet = scenebullet.instantiate()
 	bullet.position = position
 	add_sibling(bullet)
-	bullet.shoot(randf_range(-50, 50), randf_range(-19, -20))
+	bullet.shoot(randf_range(-35, 35), randf_range(-14, -17))
 	if shotbullets >= 26:
 		shoottimer.stop()
 		await get_tree().create_timer(0.5).timeout
