@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://02xutoyjwt86"]
+
+[ext_resource type="Script" uid="uid://djmyjslop7mep" path="res://scenes/test/debug_showstats.gd" id="1_vh7l5"]
+
+[node name="debug_showstats" type="Window" unique_id=2065207609]
+oversampling_override = 1.0
+title = "debugstats"
+position = Vector2i(948, 496)
+size = Vector2i(172, 63)
+unfocusable = true
+script = ExtResource("1_vh7l5")
+
+[node name="enemykills" type="Label" parent="." unique_id=1217755354]
+offset_right = 120.0
+offset_bottom = 23.0
+text = "enmykill: 0"
+
+[node name="bulletsfired" type="Label" parent="." unique_id=691394617]
+offset_top = 20.0
+offset_right = 122.0
+offset_bottom = 43.0
+text = "bltfired: 0"
+
+[node name="timesdied" type="Label" parent="." unique_id=63033248]
+offset_top = 38.0
+offset_right = 132.0
+offset_bottom = 61.0
+text = "timesdied: 0"

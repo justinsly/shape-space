@@ -25,4 +25,6 @@ shape = SubResource("CircleShape2D_1vivr")
 debug_color = Color(0.43627262, 0.45608056, 1, 0.41960785)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=837525955]
-rect = Rect2(-64, -64, 128, 128)
+rect = Rect2(-96, -96, 192, 192)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

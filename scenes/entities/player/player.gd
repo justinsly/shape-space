@@ -51,6 +51,7 @@ func _physics_process(delta):
 				bullet.position.y -= 30
 				add_sibling(bullet)
 				$FireTimer.start()
+				playervars.bulletsfired += 1
 		if Input.is_action_pressed("focus"):
 			focused = true
 		else:
@@ -108,6 +109,7 @@ func _on_hitbox_area_entered(area):
 				$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 				hitboxvisualizer.hide()
 				alive = false
+				playervars.timesdied += 1
 				velocity.x = 0
 				velocity.y = -350
 			flickerframe.emit()

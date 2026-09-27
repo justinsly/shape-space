@@ -7,6 +7,10 @@ var health := 3
 var score := 0
 var hiscore := 0
 var oldhiscore := 0
+# extra stats
+var bulletsfired := 0
+var timesdied := 0
+var enemiesdefeated := 0
 # settings
 var mastervolume := 100
 var musicvolume := 50
@@ -18,8 +22,12 @@ func return_savedict():
 	# i should probably make the save data a binary file
 	# so that people wouldnt be able to easily tinker with it
 	var save_dict = {
+		"hello_little_tinkerer": "if you ever touch one of these stats manually with your own little hands then i WILL find you",
 		"hiscore" : hiscore,
-		"oldhiscore" : oldhiscore
+		"oldhiscore" : oldhiscore,
+		"enemiesdefeated": enemiesdefeated,
+		"bulletsfired": bulletsfired,
+		"timesdied": timesdied
 	}
 	return save_dict
 
@@ -82,6 +90,9 @@ func load_score():
 		print(data)
 		hiscore = data["hiscore"]
 		oldhiscore = data["oldhiscore"]
+		enemiesdefeated = data["enemiesdefeated"]
+		bulletsfired = data["bulletsfired"]
+		timesdied = data["timesdied"]
 	print("save data loaded")
 
 func _ready():
