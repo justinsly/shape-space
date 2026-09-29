@@ -1,6 +1,7 @@
 extends Node
 
 @onready var fadeout := $UI/fadeout
+@onready var statslabel: Label = $Popup/statslabel
 
 func _ready():
 	$UI/hiscoretext.text = "high score: %s" % playervars.hiscore
@@ -32,3 +33,7 @@ func _on_statsbutton_pressed() -> void:
 
 func _on_closebutton_pressed() -> void:
 	$Popup.hide()
+
+
+func _on_popup_about_to_popup() -> void:
+	statslabel.text = "enemies defeated: %s\nshots fired: %s\ntimes you died: %s" % [playervars.enemiesdefeated, playervars.bulletsfired, playervars.timesdied]

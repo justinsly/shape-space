@@ -9,6 +9,9 @@ func _on_pressed():
 			dir.remove("user://scoredata.jden")
 			playervars.hiscore = 0
 			playervars.oldhiscore = 0
+			playervars.bulletsfired = 0
+			playervars.enemiesdefeated = 0
+			playervars.timesdied = 0
 			print("SAVE DATA ERASED, AS IF IT WAS NEVER THERE")
 		$Timer.stop()
 		$Timer.timeout.emit()

@@ -182,7 +182,7 @@ initial_position = 2
 size = Vector2i(627, 371)
 sharp_corners = true
 
-[node name="Label" type="Label" parent="Popup" unique_id=152416399]
+[node name="statslabel" type="Label" parent="Popup" unique_id=152416399]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 530.0
@@ -206,4 +206,5 @@ icon = ExtResource("3_owb6x")
 [connection signal="pressed" from="UI/optionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="UI/statsbutton" to="." method="_on_statsbutton_pressed"]
 [connection signal="pressed" from="UI/quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="about_to_popup" from="Popup" to="." method="_on_popup_about_to_popup"]
 [connection signal="pressed" from="Popup/closebutton" to="." method="_on_closebutton_pressed"]
