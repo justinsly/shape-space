@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bglsm37atwbq2" path="res://resources/textures/selectindicator.png" id="3_owb6x"]
 [ext_resource type="PackedScene" uid="uid://d2xmjt7gon5id" path="res://scenes/screenborder.tscn" id="4_owb6x"]
 [ext_resource type="FontFile" uid="uid://ciyqrtcydcu36" path="res://resources/VCR_OSD_MONO_1.001.ttf" id="5_gere7"]
+[ext_resource type="Texture2D" uid="uid://ruxenptm2u7u" path="res://resources/textures/ui/ninesliceborder.png" id="6_gere7"]
 
 [node name="titlescreen" type="Node" unique_id=152194447]
 script = ExtResource("1_cjnew")
@@ -183,10 +184,10 @@ size = Vector2i(627, 371)
 sharp_corners = true
 
 [node name="statslabel" type="Label" parent="Popup" unique_id=152416399]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 530.0
-offset_bottom = 229.0
+offset_left = 50.0
+offset_top = 62.0
+offset_right = 576.0
+offset_bottom = 234.0
 theme_override_fonts/font = ExtResource("5_gere7")
 theme_override_font_sizes/font_size = 34
 text = "enemies defeated: 000
@@ -194,13 +195,23 @@ shots fired: 000
 times you died: 000"
 
 [node name="closebutton" type="Button" parent="Popup" unique_id=1911684038]
-offset_left = 146.0
-offset_top = 286.0
-offset_right = 398.0
-offset_bottom = 338.0
+offset_left = 194.0
+offset_top = 290.0
+offset_right = 446.0
+offset_bottom = 342.0
 theme = ExtResource("2_goadl")
 text = "close"
 icon = ExtResource("3_owb6x")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Popup" unique_id=590017488]
+offset_right = 626.0
+offset_bottom = 371.0
+texture = ExtResource("6_gere7")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 16
 
 [connection signal="pressed" from="UI/startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="UI/optionsbutton" to="." method="_on_optionsbutton_pressed"]
