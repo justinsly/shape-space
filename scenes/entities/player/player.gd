@@ -107,6 +107,7 @@ func _on_hitbox_area_entered(area):
 				dieded.emit()
 				$CollisionShape2D.set_deferred("disabled", true)
 				$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+				$itemhitbox/CollisionShape2D.set_deferred("disabled", true)
 				hitboxvisualizer.hide()
 				alive = false
 				playervars.timesdied += 1

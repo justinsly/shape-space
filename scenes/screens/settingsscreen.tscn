@@ -36,7 +36,7 @@ offset_right = 960.0
 offset_bottom = 512.0
 focus_neighbor_bottom = NodePath("Dangerzone/debugdeletesavedata")
 theme = ExtResource("4_xsnb3")
-current_tab = 0
+current_tab = 1
 switch_on_drag_hover = false
 tabs_rearrange_group = 0
 tab_0/icon = ExtResource("5_ydnem")
@@ -44,6 +44,7 @@ tab_1/icon = ExtResource("5_cnf7s")
 tab_3/title = "Danger zone"
 
 [node name="Audio" type="Control" parent="UI/TabContainer" unique_id=1129068074]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -101,7 +102,6 @@ theme_override_font_sizes/font_size = 24
 text = "100"
 
 [node name="Video" type="Control" parent="UI/TabContainer" unique_id=49979492]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

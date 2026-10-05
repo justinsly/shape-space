@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d320nm4pa2cxr"]
+
+[ext_resource type="Script" uid="uid://20i7kd7rlv1h" path="res://scenes/test/laserenemytest.gd" id="1_movcy"]
+[ext_resource type="PackedScene" uid="uid://1015dlya4pqn" path="res://scenes/entities/enemies/laserenemy/enemy_laser.tscn" id="2_g7tq0"]
+[ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="3_ql6jj"]
+
+[node name="Node2D" type="Node2D" unique_id=1016630862]
+script = ExtResource("1_movcy")
+
+[node name="enemy_laser" parent="." unique_id=1165981536 instance=ExtResource("2_g7tq0")]
+position = Vector2(96, 56)
+
+[node name="Player" parent="." unique_id=1727827527 instance=ExtResource("3_ql6jj")]
+position = Vector2(528, 512)

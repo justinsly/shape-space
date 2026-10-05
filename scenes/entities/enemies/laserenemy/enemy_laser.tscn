@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://1015dlya4pqn"]
+
+[ext_resource type="Script" uid="uid://btw8737q8g6jw" path="res://scenes/entities/enemies/laserenemy/enemy_laser.gd" id="1_20dnm"]
+[ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_5tj7k"]
+[ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_eyb4c"]
+[ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_eyb4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(24.95, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
+radius = 1.4142135
+
+[node name="enemy_laser" type="Area2D" unique_id=1165981536 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_20dnm")
+max_health = 3
+score = 2
+sceneboom = ExtResource("2_eyb4c")
+metadata/_custom_type_script = "uid://bqgnae0j5ughc"
+
+[node name="warnline" type="Line2D" parent="." unique_id=969296859]
+visible = false
+points = PackedVector2Array(0, 0, 0, 776)
+width = 0.1
+default_color = Color(1, 0.41000003, 0.4886666, 0.4)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1212000979]
+visible = false
+points = PackedVector2Array(0, 0, 0, 776)
+width = 24.65
+default_color = Color(1, 0, 0, 1)
+round_precision = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636583397]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("2_5tj7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=500292135]
+shape = ExtResource("3_eyb4c")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1238000918]
+enabled = false
+shape = SubResource("RectangleShape2D_1vivr")
+target_position = Vector2(0, 768)
+collision_mask = 2
+
+[node name="areatohurtplayer" type="Area2D" parent="." unique_id=895891944 groups=["bullet", "enemy"]]
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areatohurtplayer" unique_id=234587087]
+shape = SubResource("CircleShape2D_1vivr")
+
+[connection signal="die" from="." to="." method="_on_die"]
+[connection signal="initialized" from="." to="." method="_on_initialized"]

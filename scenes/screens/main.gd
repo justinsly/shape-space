@@ -54,6 +54,7 @@ func _on_player_explode():
 	print("going to game over screen...")
 	for evilbitch in get_tree().get_nodes_in_group("enemy"):
 		print_verbose("deleting ", evilbitch, " to prevent potential crashes!!!")
-		evilbitch.free()
+		if evilbitch:
+			evilbitch.free()
 	$HUD/Healthwarning/AnimationPlayer.play("RESET")
 	loadinghandler.initiateloadingscreen("res://scenes/screens/arcadegameover.tscn", true)
