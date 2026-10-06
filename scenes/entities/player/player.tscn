@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="3_hqtel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(120, 120)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(32, 32)

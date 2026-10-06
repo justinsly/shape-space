@@ -7,7 +7,6 @@ var playerpos: Vector2
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var laserline: Line2D = $Line2D
 @onready var warnline: Line2D = $warnline
-@onready var areatohurtplayer: Area2D = $areatohurtplayer
 
 # tween doesnt sound like a real word anymore
 func _on_initialized() -> void:
@@ -41,11 +40,9 @@ func _process(_delta: float) -> void:
 			look_at(playerpos)
 			rotate(deg_to_rad(-90))
 	if raycast.is_colliding():
-		if raycast.get_collider(0).is_in_group("player"):
-			areatohurtplayer.monitorable = true
-			areatohurtplayer.global_position = playerpos
-	elif areatohurtplayer.monitorable:
-		areatohurtplayer.monitorable = false
+		var collidingthing = raycast.get_collider(0)
+		if collidingthing.is_in_group("player") && collidingthing.has_method("gethurt"):
+			collidingthing.gethurt()
 
 
 func _on_die() -> void:

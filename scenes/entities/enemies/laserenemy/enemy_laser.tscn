@@ -8,9 +8,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24.95, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
-radius = 1.4142135
-
 [node name="enemy_laser" type="Area2D" unique_id=1165981536 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
@@ -46,15 +43,6 @@ enabled = false
 shape = SubResource("RectangleShape2D_1vivr")
 target_position = Vector2(0, 768)
 collision_mask = 2
-
-[node name="areatohurtplayer" type="Area2D" parent="." unique_id=895891944 groups=["bullet", "enemy"]]
-collision_layer = 4
-collision_mask = 2
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areatohurtplayer" unique_id=234587087]
-shape = SubResource("CircleShape2D_1vivr")
 
 [connection signal="die" from="." to="." method="_on_die"]
 [connection signal="initialized" from="." to="." method="_on_initialized"]

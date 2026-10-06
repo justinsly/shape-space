@@ -6,9 +6,7 @@
 
 [node name="Node2D" type="Node2D" unique_id=1016630862]
 script = ExtResource("1_movcy")
-
-[node name="enemy_laser" parent="." unique_id=1165981536 instance=ExtResource("2_g7tq0")]
-position = Vector2(96, 56)
+e = ExtResource("2_g7tq0")
 
 [node name="Player" parent="." unique_id=1727827527 instance=ExtResource("3_ql6jj")]
 position = Vector2(528, 512)

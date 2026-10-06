@@ -97,9 +97,11 @@ func hitboxfade(fadein: bool = false):
 #FIXME: if the player is inside an enemy when the iframes runs out, they wont be considered as "hit"
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("enemy"):
-		if not iframes:
+		gethurt()
+
+func gethurt(bypassiframes := false):
+	if !iframes || bypassiframes:
 			iframes = true
-			#print("ow")
 			$IframeTimer.start()
 			playervars.health -= 1
 			if playervars.health <= 0:
@@ -115,7 +117,6 @@ func _on_hitbox_area_entered(area):
 				velocity.y = -350
 			flickerframe.emit()
 			hit.emit()
-
 
 func _on_iframe_timer_timeout():
 	#print("noframe")
