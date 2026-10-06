@@ -35,5 +35,4 @@ rect = Rect2(-192, -192, 384, 392)
 [node name="Timer" type="Timer" parent="." unique_id=1693012359]
 wait_time = 0.1
 
-[connection signal="die" from="." to="." method="_on_die"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

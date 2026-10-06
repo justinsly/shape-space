@@ -30,6 +30,3 @@ func _on_timer_timeout() -> void:
 		shoottimer.stop()
 		await get_tree().create_timer(0.5).timeout
 		ascend()
-
-func _on_die() -> void:
-	explode(true)

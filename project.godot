@@ -32,7 +32,7 @@ boot_splash/minimum_display_time=50
 
 playervars="*res://playervars.gd"
 loadinghandler="*uid://fhdhrdq111b7"
-DebugShowstats="*uid://02xutoyjwt86"
+DebugShowstats="uid://02xutoyjwt86"
 
 [display]
 

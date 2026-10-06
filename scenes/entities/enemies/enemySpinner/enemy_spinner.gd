@@ -62,9 +62,6 @@ func _on_area_entered(area: Area2D):
 		rotation_degrees = 180.0
 		$bullettimer.stop()
 
-func _on_die() -> void:
-	explode(false)
-
 func _on_bullettimer_timeout() -> void:
 	var bullet = scenebullet.instantiate()
 	bullet.position = position

@@ -44,5 +44,4 @@ shape = SubResource("RectangleShape2D_1vivr")
 target_position = Vector2(0, 768)
 collision_mask = 2
 
-[connection signal="die" from="." to="." method="_on_die"]
 [connection signal="initialized" from="." to="." method="_on_initialized"]

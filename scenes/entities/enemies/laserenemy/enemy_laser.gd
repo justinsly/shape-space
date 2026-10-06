@@ -11,7 +11,6 @@ var playerpos: Vector2
 # tween doesnt sound like a real word anymore
 func _on_initialized() -> void:
 	await ready
-	playerpos = player.global_position
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
@@ -43,7 +42,3 @@ func _process(_delta: float) -> void:
 		var collidingthing = raycast.get_collider(0)
 		if collidingthing.is_in_group("player") && collidingthing.has_method("gethurt"):
 			collidingthing.gethurt()
-
-
-func _on_die() -> void:
-	explode(false)

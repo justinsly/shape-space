@@ -19,6 +19,7 @@ signal die ## emitted when the enemy takes damage and its health is 0
 @export var flash_on_damage: bool = true ## determines if the enemy should flash white upon taking damage, neat visual feedback
 @export var boom_speed_mult: float = 1.5 ## the multiplier to apply to the explosion effect's speed
 @export var count_towards_killcount: bool = true ## determines if the enemy being defeated counts towards the "enemies defeated" statistic
+@export var explode_on_death: bool = true ## determines if the enemy should automatically trigger [method Enemy.explode] when its health reaches [param 0][br]disable if you want to perform custom behavior on "death"
 @export_group("nodes")
 @export var knock_timer: Timer ## the knock timer, that knock timer, the timer used specifically to tell how long should a knockback go, that timer
 @export_group("Preloaded Scenes")
@@ -44,6 +45,8 @@ func take_damage(dmg: int = 1, override_damage_flash = flash_on_damage, override
 	damage_taken.emit(dmg, oldhealth)
 	if health <= 0:
 		die.emit()
+		if explode_on_death:
+			explode()
 		if count_towards_killcount:
 			playervars.enemiesdefeated += 1
 	if override_damage_flash:
