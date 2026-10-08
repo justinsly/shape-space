@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ccf5wx7raj1ke"]
+
+[ext_resource type="Script" uid="uid://i8qd7bwomtbr" path="res://lasertest.gd" id="1_gv40f"]
+[ext_resource type="Script" uid="uid://v8u11ubor7lq" path="res://scenes/entities/enemies/components/componentlaser.gd" id="2_r8k5g"]
+
+[node name="lasertest" type="Node2D" unique_id=540963003]
+script = ExtResource("1_gv40f")
+
+[node name="ComponentLaser" type="Node2D" parent="." unique_id=1816628279 node_paths=PackedStringArray("raycast", "laser_line", "warn_line")]
+position = Vector2(424, 224)
+script = ExtResource("2_r8k5g")
+raycast = NodePath("RayCast2D")
+laser_line = NodePath("Line2D")
+warn_line = NodePath("Line2D2")
+warnLine_finalWidth = 5
+charge_speed = 3.355
+linger_time = 2.705
+metadata/_custom_type_script = "uid://v8u11ubor7lq"
+
+[node name="Line2D" type="Line2D" parent="ComponentLaser" unique_id=786040280]
+points = PackedVector2Array(0, 0, 0, 160)
+width = 16.325
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="ComponentLaser" unique_id=30681718]
+visible = false
+points = PackedVector2Array(0, 0, 0, 160)
+width = 0.05
+default_color = Color(1, 0, 0, 0.39215687)
+
+[node name="RayCast2D" type="RayCast2D" parent="ComponentLaser" unique_id=1446163183]
+target_position = Vector2(0, 160)
+collision_mask = 2
