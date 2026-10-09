@@ -40,5 +40,5 @@ func _process(_delta: float) -> void:
 			rotate(deg_to_rad(-90))
 	if raycast.is_colliding():
 		var collidingthing = raycast.get_collider(0)
-		if collidingthing.is_in_group("player") && collidingthing.has_method("gethurt"):
-			collidingthing.gethurt()
+		if collidingthing.is_in_group("player") && collidingthing.has_method("take_damage"):
+			collidingthing.take_damage()

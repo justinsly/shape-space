@@ -37,7 +37,7 @@ func initialize(startposx: float, startposy: float, emit_init_signal: bool = tru
 ## emits [signal Enemy.damage_taken] and passes the [code]dmg[/code]
 ## argument to the said signal when called.[br]
 ## intended to be used by other scenes interacting with this enemy
-func take_damage(dmg: int = 1, override_damage_flash = flash_on_damage, override_damage_bounce = bounce_on_damage):
+func take_damage(dmg := 1, override_damage_flash := flash_on_damage, override_damage_bounce := bounce_on_damage):
 	var oldhealth = health
 	health -= dmg
 	if override_damage_bounce:

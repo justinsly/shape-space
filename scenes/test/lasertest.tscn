@@ -12,14 +12,11 @@ script = ExtResource("2_r8k5g")
 raycast = NodePath("RayCast2D")
 laser_line = NodePath("Line2D")
 warn_line = NodePath("Line2D2")
-warnLine_finalWidth = 5
-charge_speed = 3.355
-linger_time = 2.705
 metadata/_custom_type_script = "uid://v8u11ubor7lq"
 
 [node name="Line2D" type="Line2D" parent="ComponentLaser" unique_id=786040280]
 points = PackedVector2Array(0, 0, 0, 160)
-width = 16.325
+width = 18.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="Line2D2" type="Line2D" parent="ComponentLaser" unique_id=30681718]
@@ -30,4 +27,6 @@ default_color = Color(1, 0, 0, 0.39215687)
 
 [node name="RayCast2D" type="RayCast2D" parent="ComponentLaser" unique_id=1446163183]
 target_position = Vector2(0, 160)
-collision_mask = 2
+collision_mask = 13
+
+[connection signal="stoppedshooting" from="ComponentLaser" to="." method="_on_component_laser_stoppedshooting"]
