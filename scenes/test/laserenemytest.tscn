@@ -10,3 +10,12 @@ e = ExtResource("2_g7tq0")
 
 [node name="Player" parent="." unique_id=1727827527 instance=ExtResource("3_ql6jj")]
 position = Vector2(528, 512)
+
+[node name="Button" type="Button" parent="." unique_id=1107464233]
+offset_left = 840.0
+offset_top = 264.0
+offset_right = 917.0
+offset_bottom = 295.0
+text = "summon"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,8 +1,6 @@
 extends Node2D
 class_name ComponentLaser
-## useful description describing this component
-##
-## TODO: actually write this description
+## A component that can fire a laser (idk what to type here)
 
 signal startedcharging ## emitted when [param startcharge] is executed
 signal startedshooting ## emitted when [param shoot] is executed

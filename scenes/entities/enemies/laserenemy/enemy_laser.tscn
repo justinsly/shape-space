@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_5tj7k"]
 [ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_eyb4c"]
 [ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_eyb4c"]
+[ext_resource type="Script" uid="uid://v8u11ubor7lq" path="res://scenes/entities/enemies/components/componentlaser.gd" id="5_eyb4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24.95, 20)
@@ -17,18 +18,31 @@ score = 2
 sceneboom = ExtResource("2_eyb4c")
 metadata/_custom_type_script = "uid://bqgnae0j5ughc"
 
-[node name="warnline" type="Line2D" parent="." unique_id=969296859]
-visible = false
-points = PackedVector2Array(0, 0, 0, 776)
-width = 0.1
-default_color = Color(1, 0.41000003, 0.4886666, 0.4)
+[node name="ComponentLaser" type="Node2D" parent="." unique_id=170477198 node_paths=PackedStringArray("raycast", "laser_line", "warn_line")]
+script = ExtResource("5_eyb4c")
+raycast = NodePath("ShapeCast2D")
+laser_line = NodePath("Line2D")
+warn_line = NodePath("warnline")
+linger_time = 1.4
+metadata/_custom_type_script = "uid://v8u11ubor7lq"
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1212000979]
-visible = false
+[node name="ShapeCast2D" type="ShapeCast2D" parent="ComponentLaser" unique_id=1238000918]
+enabled = false
+shape = SubResource("RectangleShape2D_1vivr")
+target_position = Vector2(0, 768)
+collision_mask = 2
+
+[node name="Line2D" type="Line2D" parent="ComponentLaser" unique_id=1212000979]
 points = PackedVector2Array(0, 0, 0, 776)
 width = 24.65
 default_color = Color(1, 0, 0, 1)
 round_precision = 2
+
+[node name="warnline" type="Line2D" parent="ComponentLaser" unique_id=969296859]
+visible = false
+points = PackedVector2Array(0, 0, 0, 776)
+width = 0.1
+default_color = Color(1, 0.41000003, 0.4886666, 0.4)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=636583397]
 position = Vector2(-9.536743e-07, -9.536743e-07)
@@ -37,11 +51,5 @@ texture = ExtResource("2_5tj7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=500292135]
 shape = ExtResource("3_eyb4c")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1238000918]
-enabled = false
-shape = SubResource("RectangleShape2D_1vivr")
-target_position = Vector2(0, 768)
-collision_mask = 2
 
 [connection signal="initialized" from="." to="." method="_on_initialized"]

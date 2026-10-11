@@ -2,6 +2,7 @@ extends Node
 
 @onready var fadeout := $UI/fadeout
 @onready var statslabel: Label = $Popup/statslabel
+@onready var statspopup: Popup = $Popup
 
 func _ready():
 	$UI/hiscoretext.text = "high score: %s" % playervars.hiscore
@@ -25,6 +26,9 @@ func _on_optionsbutton_pressed():
 func _on_quitbutton_pressed():
 	get_tree().quit()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit") && !statspopup.visible:
+		$UI/quitbutton.grab_focus()
 
 func _on_statsbutton_pressed() -> void:
 	$Popup.popup()
