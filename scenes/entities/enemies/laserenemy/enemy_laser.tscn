@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btw8737q8g6jw" path="res://scenes/entities/enemies/laserenemy/enemy_laser.gd" id="1_20dnm"]
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_5tj7k"]
 [ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="2_eyb4c"]
+[ext_resource type="PackedScene" uid="uid://5gspo75v0t7a" path="res://scenes/items/heal/itemheal.tscn" id="3_32jyk"]
 [ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_eyb4c"]
 [ext_resource type="Script" uid="uid://v8u11ubor7lq" path="res://scenes/entities/enemies/components/componentlaser.gd" id="5_eyb4c"]
 
@@ -15,7 +16,9 @@ collision_mask = 2
 script = ExtResource("1_20dnm")
 max_health = 3
 score = 2
+drop_heal_item_on_death = true
 sceneboom = ExtResource("2_eyb4c")
+sceneheal = ExtResource("3_32jyk")
 metadata/_custom_type_script = "uid://bqgnae0j5ughc"
 
 [node name="ComponentLaser" type="Node2D" parent="." unique_id=170477198 node_paths=PackedStringArray("raycast", "laser_line", "warn_line")]

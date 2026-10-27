@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://cpu4lnb3dkjj4"]
+
+[ext_resource type="Script" uid="uid://30wj017nr23e" path="res://scenes/entities/enemies/bosses/flowerboss/boss_flower.gd" id="1_1uusb"]
+[ext_resource type="PackedScene" uid="uid://dgvrul46o8g8e" path="res://scenes/entities/projectiles/enemybullet/enemybullet.tscn" id="2_belv7"]
+[ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_yr0ly"]
+[ext_resource type="PackedScene" uid="uid://c1fogo7rs78o7" path="res://scenes/entities/projectiles/slightlythinnerenemybullet/slightthinenemybullet.tscn" id="3_0dmfo"]
+[ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_belv7"]
+
+[sub_resource type="Animation" id="Animation_yr0ly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("petalshooters/topleftbottomright:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("petalshooters/toprightbottomleft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("petalshooters/lefttoprightbottom:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("petalshooters/leftbottomrighttop:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_belv7"]
+resource_name = "flowerpattern"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("petalshooters/topleftbottomright:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.5176327, 1),
+"update": 0,
+"values": [0.0, -0.5235988]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("petalshooters/toprightbottomleft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.5176327, 1),
+"update": 0,
+"values": [0.0, 0.5235988]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("petalshooters/lefttoprightbottom:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.5176327, 1),
+"update": 0,
+"values": [0.0, 0.5235988]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("petalshooters/leftbottomrighttop:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.5176327, 1),
+"update": 0,
+"values": [0.0, -0.5235988]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0dmfo"]
+_data = {
+&"RESET": SubResource("Animation_yr0ly"),
+&"flowerpattern": SubResource("Animation_belv7")
+}
+
+[node name="boss_flower" type="Area2D" unique_id=1705892077]
+script = ExtResource("1_1uusb")
+fatbulletscene = ExtResource("2_belv7")
+bulletscene = ExtResource("3_0dmfo")
+max_health = 10
+score = 5
+boom_speed_mult = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1199392593]
+position = Vector2(-9.536743e-07, 9.536743e-07)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("2_yr0ly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040422050]
+shape = ExtResource("3_belv7")
+
+[node name="petalshooters" type="Node2D" parent="." unique_id=1017912128]
+
+[node name="topleftbottomright" type="Node2D" parent="petalshooters" unique_id=1351446117]
+
+[node name="top_petalshooter_left" type="Marker2D" parent="petalshooters/topleftbottomright" unique_id=1582951219]
+unique_name_in_owner = true
+position = Vector2(-4, -32)
+
+[node name="bottom_petalshooter_right" type="Marker2D" parent="petalshooters/topleftbottomright" unique_id=1938316433]
+unique_name_in_owner = true
+position = Vector2(4, 32)
+rotation = -3.1415927
+
+[node name="toprightbottomleft" type="Node2D" parent="petalshooters" unique_id=268819506]
+
+[node name="top_petalshooter_right" type="Marker2D" parent="petalshooters/toprightbottomleft" unique_id=831042097]
+unique_name_in_owner = true
+position = Vector2(4, -32)
+
+[node name="bottom_petalshooter_left" type="Marker2D" parent="petalshooters/toprightbottomleft" unique_id=712440627]
+unique_name_in_owner = true
+position = Vector2(-4, 32)
+rotation = 3.1415927
+
+[node name="lefttoprightbottom" type="Node2D" parent="petalshooters" unique_id=1662296316]
+
+[node name="right_petalshooter_bottom" type="Marker2D" parent="petalshooters/lefttoprightbottom" unique_id=1085566142]
+unique_name_in_owner = true
+position = Vector2(32, 4)
+rotation = 1.5707964
+
+[node name="left_petalshooter_top" type="Marker2D" parent="petalshooters/lefttoprightbottom" unique_id=1491090199]
+unique_name_in_owner = true
+position = Vector2(-32, -4)
+rotation = 4.712389
+
+[node name="leftbottomrighttop" type="Node2D" parent="petalshooters" unique_id=402375215]
+
+[node name="right_petalshooter_top" type="Marker2D" parent="petalshooters/leftbottomrighttop" unique_id=1312477515]
+unique_name_in_owner = true
+position = Vector2(32, -4)
+rotation = -4.712389
+
+[node name="left_petalshooter_bottom" type="Marker2D" parent="petalshooters/leftbottomrighttop" unique_id=159717766]
+unique_name_in_owner = true
+position = Vector2(-32, 4)
+rotation = -1.5707964
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=787686117]
+libraries/ = SubResource("AnimationLibrary_0dmfo")
+
+[connection signal="finishedpattern" from="." to="." method="_on_finishedpattern"]
