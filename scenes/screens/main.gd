@@ -13,6 +13,9 @@ func _ready():
 	playervars.health = 3
 	playervars.score = 0
 	playervars.oldhiscore = playervars.hiscore
+	if playervars.showfps:
+		var fpsdisplay = preload("res://scenes/fpsdisplay.tscn").instantiate()
+		add_child(fpsdisplay)
 	print("main scene ready!")
 
 func _on_enemyspawner_timeout():

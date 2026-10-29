@@ -14,6 +14,7 @@ func _ready():
 	sfxvolumecounter.text = str(roundi(sfxvolumeslider.value))
 	$UI/TabContainer/Video/OptionButton.select(playervars.windowmode)
 	$UI/TabContainer/Game/hitboxfocustoggle.set_pressed_no_signal(playervars.showfocushitbox)
+	$UI/TabContainer/Video/FPStoggle.set_pressed_no_signal(playervars.showfps)
 
 func _on_backbutton_pressed():
 	loadinghandler.initiateloadingscreen("res://scenes/screens/titlescreen.tscn")
@@ -45,4 +46,5 @@ func _on_applybutton_pressed():
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			playervars.windowmode = 2
 	playervars.showfocushitbox = $UI/TabContainer/Game/hitboxfocustoggle.button_pressed
+	playervars.showfps = $UI/TabContainer/Video/FPStoggle.button_pressed
 	playervars.savesettings()

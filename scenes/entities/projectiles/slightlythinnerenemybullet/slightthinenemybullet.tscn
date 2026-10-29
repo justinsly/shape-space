@@ -3,16 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dgvrul46o8g8e" path="res://scenes/entities/projectiles/enemybullet/enemybullet.tscn" id="1_05w7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cekv4"]
-size = Vector2(3.3333335, 4)
+size = Vector2(2.6666667, 3.3333335)
 
 [node name="Enemybullet" unique_id=404665330 instance=ExtResource("1_05w7w")]
 
-[node name="Polygon2D" parent="." index="0" unique_id=1607008752]
+[node name="Polygon2D" parent="CanvasGroup" parent_id_path=PackedInt32Array(1645929718) index="0" unique_id=1607008752]
 polygon = PackedVector2Array(3, -4, 0, 2.3333335, -3, -4, 0, -9)
 
-[node name="Polygon2D2" parent="." index="1" unique_id=714081632]
+[node name="Polygon2D2" parent="CanvasGroup" parent_id_path=PackedInt32Array(1645929718) index="1" unique_id=714081632]
 polygon = PackedVector2Array(0, 2, 2.3333335, -4, 0, -8, -2.3333335, -4)
 
-[node name="CollisionShape2D" parent="." index="3" unique_id=160595345]
-position = Vector2(0, 5.9604645e-08)
+[node name="CollisionShape2D" parent="." index="2" unique_id=160595345]
+position = Vector2(-5.9604645e-08, 0)
 shape = SubResource("RectangleShape2D_cekv4")

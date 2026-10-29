@@ -5,6 +5,8 @@ extends Enemy
 signal finishedpattern
 var flowershooting := true
 var bulletsfired := 0
+@onready var shooterarray := [%top_petalshooter_left, %bottom_petalshooter_right, %top_petalshooter_right, %bottom_petalshooter_left, %left_petalshooter_top, %right_petalshooter_bottom, %left_petalshooter_bottom, %right_petalshooter_top]
+@onready var petalshooters: Node2D = $petalshooters
 
 func fire(shooter: Marker2D, shootspeed:= 100):
 	var bullet = bulletscene.instantiate()
@@ -16,14 +18,8 @@ func fire(shooter: Marker2D, shootspeed:= 100):
 func flowerpattern():
 	$AnimationPlayer.play("flowerpattern")
 	while flowershooting && bulletsfired <= 100:
-		fire(%top_petalshooter_left)
-		fire(%bottom_petalshooter_right)
-		fire(%top_petalshooter_right)
-		fire(%bottom_petalshooter_left)
-		fire(%left_petalshooter_top)
-		fire(%right_petalshooter_bottom)
-		fire(%left_petalshooter_bottom)
-		fire(%right_petalshooter_top)
+		for i in shooterarray:
+			fire(i)
 		bulletsfired += 8
 		if bulletsfired <= 100:
 			await get_tree().create_timer(0.25).timeout
@@ -36,6 +32,15 @@ func flowerpattern():
 		add_sibling(bullet)
 		bullet.shoot(100)
 		deg += 2
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		var playerpos:Vector2 = player.global_position
+		var bullet = fatbulletscene.instantiate()
+		bullet.position = position
+		bullet.look_at(playerpos)
+		bullet.rotate(deg_to_rad(90))
+		add_sibling(bullet)
+		bullet.shoot(250)
 	finishedpattern.emit()
 
 func _ready() -> void:
@@ -48,7 +53,5 @@ func _process(_delta: float) -> void:
 func _on_finishedpattern() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var tween := create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "rotation_degrees", rotation_degrees + 5, 0.5)
+	tween.tween_property(petalshooters, "rotation_degrees", rotation_degrees + 5, 0.5)
 	tween.tween_callback(flowerpattern)

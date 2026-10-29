@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d1m3qwun2m776"]
+
+[ext_resource type="Theme" uid="uid://dpxoi6db5uese" path="res://resources/biguitext_theme.tres" id="1_icjji"]
+[ext_resource type="Script" uid="uid://4oc0vkycwqq4" path="res://scenes/fpsdisplay.gd" id="2_gqtcu"]
+
+[node name="FPSdisplay" type="Control" unique_id=1009109850]
+z_index = 6
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_icjji")
+script = ExtResource("2_gqtcu")
+
+[node name="FPSLabel" type="Label" parent="." unique_id=1575188979]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -46.0
+offset_right = -4.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "00 FPS"
+horizontal_alignment = 2

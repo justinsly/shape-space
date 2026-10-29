@@ -129,6 +129,15 @@ offset_right = 242.0
 offset_bottom = 59.0
 text = "window mode"
 
+[node name="FPStoggle" type="CheckButton" parent="UI/TabContainer/Video" unique_id=1515839611]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 151.0
+offset_right = 597.0
+offset_bottom = 196.0
+button_pressed = true
+text = "display FPS during gameplay"
+
 [node name="Game" type="Control" parent="UI/TabContainer" unique_id=1857858308]
 visible = false
 layout_mode = 2

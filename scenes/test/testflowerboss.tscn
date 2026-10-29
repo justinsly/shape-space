@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://c3ca548dg6v77"]
 
 [ext_resource type="PackedScene" uid="uid://cpu4lnb3dkjj4" path="res://scenes/entities/enemies/bosses/flowerboss/boss_flower.tscn" id="1_06ylj"]
+[ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="2_stbvn"]
+[ext_resource type="PackedScene" uid="uid://d1m3qwun2m776" path="res://scenes/fpsdisplay.tscn" id="3_i1cts"]
 
 [node name="testflowerboss" type="Node2D" unique_id=940711817]
 
 [node name="boss_flower" parent="." unique_id=1705892077 instance=ExtResource("1_06ylj")]
 position = Vector2(512, 232)
+
+[node name="Player" parent="." unique_id=1727827527 instance=ExtResource("2_stbvn")]
+position = Vector2(560, 472)
+
+[node name="FPSdisplay" parent="." unique_id=1009109850 instance=ExtResource("3_i1cts")]
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true

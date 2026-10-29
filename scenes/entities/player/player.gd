@@ -14,7 +14,7 @@ signal flickerframe
 @export var sceneboom: PackedScene
 @export var speed := 450
 ## the player speed when the focus/slow button is held
-@export var focusedspeed := 290
+@export var focusedspeed := 250
 # used for delays between shots
 var canfire := true
 # for invuln periods when player gets hit
