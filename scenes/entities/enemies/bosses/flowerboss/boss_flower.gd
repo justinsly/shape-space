@@ -3,7 +3,6 @@ extends Enemy
 @export var fatbulletscene: PackedScene
 @export var bulletscene: PackedScene
 signal finishedpattern
-var flowershooting := true
 var bulletsfired := 0
 @onready var shooterarray := [%top_petalshooter_left, %bottom_petalshooter_right, %top_petalshooter_right, %bottom_petalshooter_left, %left_petalshooter_top, %right_petalshooter_bottom, %left_petalshooter_bottom, %right_petalshooter_top]
 @onready var petalshooters: Node2D = $petalshooters
@@ -17,7 +16,7 @@ func fire(shooter: Marker2D, shootspeed:= 100):
 
 func flowerpattern():
 	$AnimationPlayer.play("flowerpattern")
-	while flowershooting && bulletsfired <= 100:
+	while bulletsfired <= 100:
 		for i in shooterarray:
 			fire(i)
 		bulletsfired += 8
