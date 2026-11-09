@@ -4,6 +4,7 @@ extends Node
 ## to add a new entry: click on "Add Element" and then select a scene
 @export var spawnable_enemies: Array[PackedScene]
 @export var rare_spawnable_enemies: Array[PackedScene] ## this list of enemies should rarely spawn
+@export var bosses: Array[PackedScene] ## list of bosses (duh)
 @export var HiscoreLabel: Label
 @export var ScoreLabel: Label
 @export var HealthHud: Sprite2D
@@ -45,7 +46,9 @@ func _on_scoremanager_update():
 	# FIXME: this shit gets intense the moment you reach a score of 3
 	#$enemyspawner.wait_time = $enemyspawner.wait_time + (((playervars.score * 0.5) * -1) + 0.4)
 	#print(str($enemyspawner.wait_time))
-
+	
+	if playervars.score >= 15 && randi_range(0, 25) == 25:
+		pass # insert cool boss stuff here
 
 
 func _on_player_explode():

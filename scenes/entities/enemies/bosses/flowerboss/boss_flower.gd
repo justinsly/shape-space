@@ -34,12 +34,15 @@ func flowerpattern():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var playerpos:Vector2 = player.global_position
-		var bullet = fatbulletscene.instantiate()
-		bullet.position = position
-		bullet.look_at(playerpos)
-		bullet.rotate(deg_to_rad(90))
-		add_sibling(bullet)
-		bullet.shoot(250)
+		var extradeg := 80
+		for i in 3:
+			var bullet = fatbulletscene.instantiate()
+			bullet.position = position
+			bullet.look_at(playerpos)
+			bullet.rotate(deg_to_rad(extradeg))
+			add_sibling(bullet)
+			bullet.shoot(250)
+			extradeg += 10
 	finishedpattern.emit()
 
 func _ready() -> void:
@@ -52,5 +55,5 @@ func _process(_delta: float) -> void:
 func _on_finishedpattern() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var tween := create_tween()
-	tween.tween_property(petalshooters, "rotation_degrees", rotation_degrees + 5, 0.5)
+	tween.tween_property(petalshooters, "rotation_degrees", rotation_degrees + 15, 0.5)
 	tween.tween_callback(flowerpattern)

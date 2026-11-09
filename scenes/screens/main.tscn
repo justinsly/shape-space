@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://wrj2frje2cqb" path="res://pausehandler.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://1015dlya4pqn" path="res://scenes/entities/enemies/laserenemy/enemy_laser.tscn" id="6_su55h"]
 [ext_resource type="Texture2D" uid="uid://cbpt1tqlwf1bv" path="res://resources/textures/healhud.png" id="7_htic3"]
+[ext_resource type="PackedScene" uid="uid://cpu4lnb3dkjj4" path="res://scenes/entities/enemies/bosses/flowerboss/boss_flower.tscn" id="7_qjuti"]
 [ext_resource type="Texture2D" uid="uid://dcku5ge3alk1o" path="res://resources/textures/hudcontainer.png" id="7_sa82p"]
 [ext_resource type="Texture2D" uid="uid://da4farjvw3j48" path="res://resources/textures/healthwarnlight.png" id="9_n2jqv"]
 [ext_resource type="Texture2D" uid="uid://btj5d1i6rf47q" path="res://resources/textures/leftedge.png" id="10_woqya"]
@@ -65,6 +66,7 @@ _data = {
 [node name="Main" type="Node" unique_id=399326169 node_paths=PackedStringArray("HiscoreLabel", "ScoreLabel", "HealthHud")]
 script = ExtResource("1_h2yge")
 spawnable_enemies = Array[PackedScene]([ExtResource("2_2vgtk"), ExtResource("3_tkjme"), ExtResource("4_ftx24"), ExtResource("5_x5y6l"), ExtResource("6_su55h")])
+bosses = Array[PackedScene]([ExtResource("7_qjuti")])
 HiscoreLabel = NodePath("HUD/HiscoreLabel")
 ScoreLabel = NodePath("HUD/ScoreLabel")
 HealthHud = NodePath("HUD/HealthHud")

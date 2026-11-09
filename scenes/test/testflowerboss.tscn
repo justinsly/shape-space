@@ -3,11 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://cpu4lnb3dkjj4" path="res://scenes/entities/enemies/bosses/flowerboss/boss_flower.tscn" id="1_06ylj"]
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="2_stbvn"]
 [ext_resource type="PackedScene" uid="uid://d1m3qwun2m776" path="res://scenes/fpsdisplay.tscn" id="3_i1cts"]
+[ext_resource type="Texture2D" uid="uid://dcku5ge3alk1o" path="res://resources/textures/hudcontainer.png" id="4_0g12a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqsb8"]
+size = Vector2(513, 728)
 
 [node name="testflowerboss" type="Node2D" unique_id=940711817]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1663116907]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=708123655]
+position = Vector2(904, 308)
+shape = SubResource("RectangleShape2D_eqsb8")
+
 [node name="boss_flower" parent="." unique_id=1705892077 instance=ExtResource("1_06ylj")]
-position = Vector2(512, 232)
+position = Vector2(300, 156)
 
 [node name="Player" parent="." unique_id=1727827527 instance=ExtResource("2_stbvn")]
 position = Vector2(560, 472)
@@ -16,3 +26,9 @@ position = Vector2(560, 472)
 offset_right = 1152.0
 offset_bottom = 648.0
 metadata/_edit_use_anchors_ = true
+
+[node name="HudContainer" type="Sprite2D" parent="." unique_id=1076497224]
+z_index = 5
+position = Vector2(900, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("4_0g12a")
