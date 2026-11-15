@@ -45,9 +45,6 @@ func flowerpattern():
 			extradeg += 10
 	finishedpattern.emit()
 
-func _ready() -> void:
-	flowerpattern()
-
 func _process(_delta: float) -> void:
 	pass
 
@@ -56,4 +53,12 @@ func _on_finishedpattern() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var tween := create_tween()
 	tween.tween_property(petalshooters, "rotation_degrees", rotation_degrees + 15, 0.5)
+	tween.tween_callback(flowerpattern)
+
+
+func _on_initialized() -> void:
+	await ready
+	var tween := create_tween()
+	
+	tween.tween_property(self, "position:y", position.y + 124, 1)
 	tween.tween_callback(flowerpattern)

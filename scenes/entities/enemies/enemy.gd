@@ -77,6 +77,9 @@ func take_knockback(pixels_per_step: float = 200):
 
 ## spawns [member Enemy.sceneboom] at the enemy position, drops the heal item if [param dropstuff] and [member Enemy.drop_heal_item_on_death] is true, adds [param score] to the player's score, and then deletes itself
 func explode(dropstuff: bool = true, overridescore: int = score):
+	if !sceneboom:
+		print("attempting to explode with no explosion effect scene...")
+		return
 	var boom := sceneboom.instantiate()
 	boom.position = position
 	add_sibling(boom)

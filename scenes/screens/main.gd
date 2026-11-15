@@ -8,6 +8,9 @@ extends Node
 @export var HiscoreLabel: Label
 @export var ScoreLabel: Label
 @export var HealthHud: Sprite2D
+@export var enemyspawner: Timer
+var currentboss: Enemy
+var bosstime := false
 
 func _ready():
 	HiscoreLabel.text = str(playervars.hiscore)
@@ -20,6 +23,8 @@ func _ready():
 	print("main scene ready!")
 
 func _on_enemyspawner_timeout():
+	if bosstime:
+		return
 	var sceneenemy = spawnable_enemies.pick_random()
 	if randi_range(1, 10) == 10:
 		sceneenemy = spawnable_enemies.pick_random() # change this to rare_spawnable_enemies once we actually add enemies to that list
@@ -47,9 +52,20 @@ func _on_scoremanager_update():
 	#$enemyspawner.wait_time = $enemyspawner.wait_time + (((playervars.score * 0.5) * -1) + 0.4)
 	#print(str($enemyspawner.wait_time))
 	
-	if playervars.score >= 15 && randi_range(0, 25) == 25:
-		pass # insert cool boss stuff here
+	# its quite lenghty i know
+	if playervars.score >= 15 && randi_range(0, 25) >= 17 && !bosstime || playervars.score >= 15 && playervars.guaranteeboss && !bosstime:
+		print("BOSS TIME!!!")
+		var bossscene = bosses.pick_random()
+		print("boss picked: ", bossscene)
+		bosstime = true
+		await get_tree().create_timer(3).timeout
+		currentboss = bossscene.instantiate()
+		currentboss.die.connect(_on_boss_death)
+		currentboss.initialize(348, -47)
+		add_child(currentboss)
 
+func _on_boss_death():
+	bosstime = false
 
 func _on_player_explode():
 	await get_tree().create_timer(2).timeout

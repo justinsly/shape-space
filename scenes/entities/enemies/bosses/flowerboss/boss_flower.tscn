@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvq8cogv61wwb" path="res://icon.svg" id="2_yr0ly"]
 [ext_resource type="PackedScene" uid="uid://c1fogo7rs78o7" path="res://scenes/entities/projectiles/slightlythinnerenemybullet/slightthinenemybullet.tscn" id="3_0dmfo"]
 [ext_resource type="Shape2D" uid="uid://dbjqyi1lr8ujd" path="res://scenes/entities/enemies/resources/basicenemycollision.tres" id="3_belv7"]
+[ext_resource type="PackedScene" uid="uid://bg3heqwjv2ran" path="res://scenes/effects/boom/boom.tscn" id="4_0dmfo"]
 
 [sub_resource type="Animation" id="Animation_yr0ly"]
 length = 0.001
@@ -119,9 +120,10 @@ _data = {
 script = ExtResource("1_1uusb")
 fatbulletscene = ExtResource("2_belv7")
 bulletscene = ExtResource("3_0dmfo")
-max_health = 10
-score = 5
+max_health = 13
+score = 10
 boom_speed_mult = 1.0
+sceneboom = ExtResource("4_0dmfo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1199392593]
 position = Vector2(-9.536743e-07, 9.536743e-07)
@@ -183,3 +185,4 @@ rotation = -1.5707964
 libraries/ = SubResource("AnimationLibrary_0dmfo")
 
 [connection signal="finishedpattern" from="." to="." method="_on_finishedpattern"]
+[connection signal="initialized" from="." to="." method="_on_initialized"]

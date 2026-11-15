@@ -3,21 +3,23 @@ extends Node
 const SCORESAVEFILE := "user://scoredata.jden" ## string path for scoredata.jden file
 const SETTINGSFILE := "user://settings.cfg" ## string path for settings.cfg file
 # player stats
-var health := 3
-var score := 0
-var hiscore := 0
-var oldhiscore := 0
+var health := 3 ## the player's current health
+var score := 0 ## the player's current score
+var hiscore := 0 ## the player's high score
+var oldhiscore := 0 ## idk lol
 # extra stats
-var bulletsfired := 0
-var timesdied := 0
-var enemiesdefeated := 0
+var bulletsfired := 0 ## the total amount of bullets that has been fired
+var timesdied := 0 ## the amount of times the player died
+var enemiesdefeated := 0 ## the amount of enemies that has been defeated
 # settings
 var mastervolume := 100
 var musicvolume := 50
 var sfxvolume := 50
 var windowmode := 0
-var showfocushitbox := true
-var showfps := true
+var showfocushitbox := true ## if the player's hitbox should be visible when focusing, the variable is called "show focus hitbox", not "show focu shitbox"
+var showfps := true ## if the current framerate should be shown during gameplay
+# cheats and debugs
+var guaranteeboss := false ## controls if the boss will always spawn whenever score updates instead of relying on chance
 
 func return_savedict():
 	# i should probably make the save data a binary file

@@ -63,13 +63,14 @@ _data = {
 &"healthwarningbeep": SubResource("Animation_woqya")
 }
 
-[node name="Main" type="Node" unique_id=399326169 node_paths=PackedStringArray("HiscoreLabel", "ScoreLabel", "HealthHud")]
+[node name="Main" type="Node" unique_id=399326169 node_paths=PackedStringArray("HiscoreLabel", "ScoreLabel", "HealthHud", "enemyspawner")]
 script = ExtResource("1_h2yge")
 spawnable_enemies = Array[PackedScene]([ExtResource("2_2vgtk"), ExtResource("3_tkjme"), ExtResource("4_ftx24"), ExtResource("5_x5y6l"), ExtResource("6_su55h")])
 bosses = Array[PackedScene]([ExtResource("7_qjuti")])
 HiscoreLabel = NodePath("HUD/HiscoreLabel")
 ScoreLabel = NodePath("HUD/ScoreLabel")
 HealthHud = NodePath("HUD/HealthHud")
+enemyspawner = NodePath("enemyspawner")
 metadata/_edit_vertical_guides_ = [32.0, 64.0]
 
 [node name="Player" parent="." unique_id=1550446609 instance=ExtResource("1_ig7tw")]
