@@ -11,6 +11,7 @@ extends Node
 @export var enemyspawner: Timer
 var currentboss: Enemy
 var bosstime := false
+var kills_tillboss := 15
 
 func _ready():
 	HiscoreLabel.text = str(playervars.hiscore)
@@ -47,14 +48,17 @@ func _on_player_heal():
 func _on_scoremanager_update():
 	ScoreLabel.text = str(playervars.score)
 	HiscoreLabel.text = str(playervars.hiscore)
+	if kills_tillboss > 0:
+		kills_tillboss -= 1
 	
 	# FIXME: this shit gets intense the moment you reach a score of 3
 	#$enemyspawner.wait_time = $enemyspawner.wait_time + (((playervars.score * 0.5) * -1) + 0.4)
 	#print(str($enemyspawner.wait_time))
 	
 	# its quite lenghty i know
-	if playervars.score >= 15 && randi_range(0, 25) >= 17 && !bosstime || playervars.score >= 15 && playervars.guaranteeboss && !bosstime:
+	if kills_tillboss <= 0 && randi_range(0, 25) >= 17 && !bosstime || playervars.score >= 15 && playervars.guaranteeboss && !bosstime:
 		print("BOSS TIME!!!")
+		kills_tillboss = 16
 		var bossscene = bosses.pick_random()
 		print("boss picked: ", bossscene)
 		bosstime = true
