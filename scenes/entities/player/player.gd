@@ -84,13 +84,11 @@ func hitboxfade(fadein: bool = false):
 		true:
 			if tween:
 				tween.kill()
-				print("debugtweenin")
 			tween = create_tween()
 			tween.tween_property(hitboxvisualizer, "modulate:a", 1.0, 0.3)
 		_:
 			if tween:
 				tween.kill()
-				print("debugtweenout")
 			tween = create_tween()
 			tween.tween_property(hitboxvisualizer, "modulate:a", 0.0, 0.3)
 

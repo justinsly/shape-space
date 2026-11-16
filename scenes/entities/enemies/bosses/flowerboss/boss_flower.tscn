@@ -116,7 +116,9 @@ _data = {
 &"flowerpattern": SubResource("Animation_belv7")
 }
 
-[node name="boss_flower" type="Area2D" unique_id=1705892077]
+[node name="boss_flower" type="Area2D" unique_id=1705892077 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_1uusb")
 fatbulletscene = ExtResource("2_belv7")
 bulletscene = ExtResource("3_0dmfo")

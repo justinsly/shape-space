@@ -7,6 +7,13 @@ var bulletsfired := 0
 @onready var shooterarray := [%top_petalshooter_left, %bottom_petalshooter_right, %top_petalshooter_right, %bottom_petalshooter_left, %left_petalshooter_top, %right_petalshooter_bottom, %left_petalshooter_bottom, %right_petalshooter_top]
 @onready var petalshooters: Node2D = $petalshooters
 
+# i see lots of people say "if you are gonna make a game with lots of objects
+#                           then you should implement object pooling!!"
+# so i have looked into how it works
+# seems pretty cool
+# i just gotta figure out how the fuck would i implement something like that
+# and then finally this boss will stop causing framerate drops by just existing
+
 func fire(shooter: Marker2D, shootspeed:= 100):
 	var bullet = bulletscene.instantiate()
 	bullet.rotation = shooter.global_rotation
