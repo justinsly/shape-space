@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3ca548dg6v77"]
 
 [ext_resource type="PackedScene" uid="uid://cpu4lnb3dkjj4" path="res://scenes/entities/enemies/bosses/flowerboss/boss_flower.tscn" id="1_06ylj"]
+[ext_resource type="Script" uid="uid://bd02cv2axi7bj" path="res://scenes/test/testflowerboss.gd" id="1_eqsb8"]
 [ext_resource type="PackedScene" uid="uid://cynekxynk6jro" path="res://scenes/entities/player/player.tscn" id="2_stbvn"]
 [ext_resource type="PackedScene" uid="uid://d1m3qwun2m776" path="res://scenes/fpsdisplay.tscn" id="3_i1cts"]
 [ext_resource type="Texture2D" uid="uid://dcku5ge3alk1o" path="res://resources/textures/hudcontainer.png" id="4_0g12a"]
@@ -9,6 +10,7 @@
 size = Vector2(513, 728)
 
 [node name="testflowerboss" type="Node2D" unique_id=940711817]
+script = ExtResource("1_eqsb8")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1663116907]
 

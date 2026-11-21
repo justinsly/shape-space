@@ -28,7 +28,7 @@ signal die ## emitted when the enemy takes damage and its health is 0
 @onready var health := max_health
 
 ## normally should be run by whatever is handling the spawning of the enemies, repositions the enemy to the given [param startposx] and [param startposy] coordinates
-func initialize(startposx: float, startposy: float, emit_init_signal: bool = true):
+func initialize(startposx: float = position.x, startposy: float = position.y, emit_init_signal: bool = true):
 	position.x = startposx
 	position.y = startposy
 	if emit_init_signal:

@@ -13,9 +13,14 @@ var bulletsfired := 0
 # seems pretty cool
 # i just gotta figure out how the fuck would i implement something like that
 # and then finally this boss will stop causing framerate drops by just existing
+#
+# update: i tried an implementation, the spawning seems to work at first,
+#         but then the whole thing just shits itself after the first iteration,
+#         bullets would just randomly disappear for some reason, and it would
+#         accumulate a crap ton of bullet nodes in the tree
 
 func fire(shooter: Marker2D, shootspeed:= 100):
-	var bullet = bulletscene.instantiate()
+	var bullet := bulletscene.instantiate()
 	bullet.rotation = shooter.global_rotation
 	bullet.position = shooter.global_position
 	add_sibling.call_deferred(bullet)
@@ -62,10 +67,15 @@ func _on_finishedpattern() -> void:
 	tween.tween_property(petalshooters, "rotation_degrees", rotation_degrees + 15, 0.5)
 	tween.tween_callback(flowerpattern)
 
-
 func _on_initialized() -> void:
-	await ready
+	if !is_node_ready():
+		await ready
 	var tween := create_tween()
 	
-	tween.tween_property(self, "position:y", position.y + 124, 1)
+	tween.tween_property(self, "position:y", position.y + 124, 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(flowerpattern)
+
+
+func _on_die() -> void:
+	for bullet in get_tree().get_nodes_in_group("bullet"):
+		bullet.queue_free()

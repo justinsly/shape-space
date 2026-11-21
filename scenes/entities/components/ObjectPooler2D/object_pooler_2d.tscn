@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://850how5fbwtp"]
+
+[ext_resource type="Script" uid="uid://vrqj0wakb2x" path="res://scenes/entities/components/ObjectPooler2D/object_pooler_2d.gd" id="1_grjua"]
+
+[node name="ObjectPooler2D" type="Node2D" unique_id=1090838303]
+script = ExtResource("1_grjua")

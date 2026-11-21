@@ -186,5 +186,6 @@ rotation = -1.5707964
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=787686117]
 libraries/ = SubResource("AnimationLibrary_0dmfo")
 
+[connection signal="die" from="." to="." method="_on_die"]
 [connection signal="finishedpattern" from="." to="." method="_on_finishedpattern"]
 [connection signal="initialized" from="." to="." method="_on_initialized"]
